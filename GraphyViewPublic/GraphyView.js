@@ -86,8 +86,6 @@ var GraphyView = function($) {
         $4('#serachForm').ready(function() {
             _qryGraphyView();
         });
-
-
     }
 
     function changeDateDefault() {
@@ -282,7 +280,6 @@ var GraphyView = function($) {
         };
 
         //动态条件部分
-
         if (dynamicCondition.length > 0) { //有
             param.dynamicConLength = dynamicCondition.length;
             for (var i = 0; i < dynamicCondition.length; i++) {
@@ -296,7 +293,6 @@ var GraphyView = function($) {
                 }
             }
         }
-
 
         if (viewObj.DISPLAY_MODE == 1) {
             ServiceUtil.runAsyncFunction2(param, "getChareData", serviceName, function(ret) {
