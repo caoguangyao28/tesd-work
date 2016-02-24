@@ -1,46 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>hello world</title>
     <script src="vue.js"></script>
 </head>
 <body>
-    <div id="app">{{ message }}</div>
-    <div id="app2">
-        <p>{{message}}</p>
-        <input v-model="message" type="text"/>
-    </div>
-    <div id="app3">
-        <ul>
-            <li v-for="todo in todos">
-                {{ todo.text }}
-            </li>
-        </ul>
-    </div>
+<!--hello world-->
+<div id="app">{{ message }}</div>
+<!--双向绑定-->
+<div id="app2">
+    <p>{{message}}</p>
+    <input v-model="message" type="text" v-on:keyup.enter='updateUser' />
+</div>
+<!--渲染列表-->
+<div id="app3">
+    <ul>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ul>
+</div>
+<!--处理用户输入-->
+<div id="appUeserIo">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">reverseMessage</button>
+</div>
+<!--入门综合-->
+<div id="appAll">
+    <input v-on:keyup.enter="addTodo"  v-model="newTodo"/>
+    <ul>
+        <li v-for="todo in todos">
+            <span>{{ todo.text }}</span>
+            <button v-on:click="removeTodo($index)">X</button>
+        </li>
+    </ul>
+</div>
 </body>
 <script>
-   var vm1 = new Vue({
+    var vm1 = new Vue({
         el: '#app',
         data: {
             message: 'Hello Vue.js!'
         }
     });
-   var vm2 = new Vue({
+    var vm2 = new Vue({
         el: '#app2',
         data: {
             message: 'Hello Vue.js2!'
+        },
+        methods:{
+            updateUser: function () {
+                vmUserIo.message = this.message;
+            }
         }
     });
-   var vm3 =  new Vue({
+    var vm3 = new Vue({
         el: '#app3',
         data: {
             todos: [
-                { text: 'Learn JavaScript' },
-                { text: 'Learn Vue.js' },
-                { text: 'Build Something Awesome' }
+                {text: 'Learn JavaScript'},
+                {text: 'Learn Vue.js'},
+                {text: 'Build Something Awesome'}
             ]
         }
-    })
+    });
+    var vmUserIo = new Vue({
+        el:'#appUeserIo',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    });
+    var vmapp = new Vue({
+        el: '#appAll',
+        data: {
+            newTodo: '',
+            todos: [
+                { text: 'Add some todos' }
+            ]
+        },
+        methods: {
+            addTodo: function () {
+                var text = this.newTodo.trim();
+                if (text) {
+                    this.todos.push({ text: text });
+                    this.newTodo = '';
+                }
+            },
+            removeTodo: function (index) {
+                this.todos.splice(index, 1);
+            }
+        }
+    });
 </script>
 </html>
