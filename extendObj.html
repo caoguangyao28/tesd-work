@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>组合obj</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script>
+        var defaultObj = {name:'cgy',width:null,length:null,options:{id:111,sayHello: function () {
+            alert('helloWorld');
+        }}};
+        var obj2= {name:"karry",email:"karry@a.com",tel:13022556186,options:{id:222,sayGoodbye: function () {
+            alert("goodBye");
+        }}};
+        var obj1 = $.extend(true,{},defaultObj ,obj2 );
+        obj1.options.sayGoodbye();obj1.options.sayHello();
+        console.log(JSON.stringify(obj1));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

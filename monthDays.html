@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function addZero(d){
+            if (d < 10) {
+                d = '0' + d;
+            }
+            return d;
+        }
+        function getCurrentDate(){
+            var curDate = new Date();
+            var curYear = curDate.getFullYear();
+            var curMonth = curDate.getMonth() + 1;
+            var curDay = curDate.getDate();
+
+            if (curMonth < 10) {
+                curMonth = '0' + curMonth;
+            }
+            if (curDay < 10) {
+                curDay = '0' + curDay;
+            }
+            console.log(curMonth + '-' + curDay + '-' + curYear + ' ' + '00' + ':' + '00' + ':' + '00');
+            return  curMonth + '-' + curDay + '-' + curYear + ' ' + '00' + ':' + '00' + ':' + '00';
+
+        }
+        var ftempDate = getCurrentDate();
+
+        function addMins(startDate,mins){
+//            var temp = startDate.split(',');
+//            var tempDate = new Date(temp[0],temp[1],temp[2],0,0,0);
+            var tempDate = new Date(startDate);
+            tempDate.setMinutes(tempDate.getMinutes() + mins);
+            return tempDate;
+        }
+        var dateLegends = [];
+        for(var i = 1;i<=96;i++){
+            var mins;
+
+            if(i == 96){
+                mins =  i*15 - 1;
+            }else{
+                mins = i*15;
+            }
+            var temp = addMins(ftempDate,mins);
+            dateLegends.push(addZero(temp.getHours())+':'+addZero(temp.getMinutes()));
+        }
+        console.log(dateLegends);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

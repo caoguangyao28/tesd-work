@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js call调用方式</title>
+    <script type="text/javascript">
+        function Product(name, price) {
+            this.name = name;
+            this.price = price;
+            return this;
+        }
+
+        function Food(name, price) {
+            Product.call(this, name, price);
+            this.category = 'food';
+        }
+
+        console.log(JSON.stringify(Food.prototype));
+
+        //        Food.prototype ={
+        //          name : 'test',
+        //          price : 'price'
+        //        };
+
+        Food.prototype = new Product('test', 20);
+
+        console.log(JSON.stringify(Food.prototype));
+
+        function Toy(name, price) {
+
+            Product.call(this, name, price);
+
+            this.category = 'toy';
+
+        }
+
+        //Toy.prototype = new Product();
+
+
+        var cheese = new Food('feta', 5);
+        console.log(cheese.name);
+        console.log(cheese.price);
+        console.log(cheese.category);
+
+        var fun = new Toy('robot', 40);
+        console.log('fun de ' + fun.name);
+        console.log('fun de ' + fun.price);
+        console.log('fun de ' + fun.category);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

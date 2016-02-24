@@ -1,0 +1,42 @@
+@color1:red;
+@layoutColor:green;
+@baseRadius:5px;
+.mySelf{
+  width: 100%;
+  border-radius: 0;
+}
+.bordered{
+  border-top:dotted 1px black;
+  border-bottom: dotted 1px black;
+}
+#menu a{
+  color: #111;
+  .bordered;
+}
+.post a{
+  color: @color1;
+  .bordered;
+}
+.border-radius(@radius: 5px){
+  border-radius: @radius;
+}
+
+#header{
+  .border-radius(4px);
+}
+.button{
+  .border-radius(6px);
+}
+
+.button2{
+  .border-radius();
+}
+
+.wrap () {
+  text-wrap: normal;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  word-wrap: break-word;
+}
+
+pre { .wrap }

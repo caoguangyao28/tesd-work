@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多屏播放</title>
+    <style>
+        #players div{
+            clear: none;
+            float: left;
+        }
+
+    </style>
+    <script src="../jquery/jquery-1.10.2.min.js"></script>
+    <script src="JSMap.js"></script>
+    <script src="MultiScreen.js"></script>
+    <script src="VideoMonitor.js"></script>
+    <script>
+        $(function () {
+            haoTianVideo.isMultiScreen = true;
+            haoTianVideo.login();
+            if(haoTianVideo.isLogin){
+                multiscreen.Init('players');
+                multiscreen.SetScreen(4);
+            }
+
+        })
+    </script>
+
+</head>
+<body style="width: 100%;height: 100%;">
+<div style="width: 100%;height: 100%;">
+    <div style="width: 200px;height: 500px;float: left;">
+        <button onclick="haoTianVideo.playHotanVideo('33T1WZ/KX1000217403')">播放</button>
+    </div>
+
+    <div id="players" style="width: 800px;height: 500px;float: left;">
+
+    </div>
+
+</div>
+
+    <!-- 底部工具栏 -->
+    <!--<div id="divBottomTools" class="sts-panel-btn" style="height: 32px; width: 100%;">-->
+        <!--<div class="bottom_tools">-->
+            <!--<a class="guanbisuoyou" href="javascript:void(0);" onclick='Vedio.closeAllPlayer();'><%=getString("CLOSE_ALL")%></a>-->
+            <!--<a class="guanbi" href="javascript:void(0);" onclick='Vedio.closePlayer();'><%=getString("CLOSE")%></a>-->
+            <!--<a class="zhuapai" href="javascript:void(0);" onclick="Vedio.localCapPic();"><%=getString("CAPTURE")%></a>-->
+            <!--<a class="luxiang" id="startRecord" href="javascript:void(0);" onclick="Vedio.localRecord('START_RECORD');"><%=getString("RECORD")%></a>-->
+            <!--<a class="luxiang" id="stopRecord" style="display:none" href="javascript:void(0);" onclick="Vedio.localRecord('STOP_RECORD');"><%=getString("STOP_RECORD")%></a>-->
+            <!--<div class="buju">-->
+                <!--<li class="buju1" onclick="Vedio.setScreen('1');"></li>-->
+                <!--<li class="buju4" onclick="Vedio.setScreen('4');"></li>-->
+                <!--<li class="buju6" onclick="Vedio.setScreen('6');"></li>-->
+                <!--<li class="buju8" onclick="Vedio.setScreen('8');"></li>-->
+                <!--<li class="buju9" onclick="Vedio.setScreen('9');"></li>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</body>
+</html>

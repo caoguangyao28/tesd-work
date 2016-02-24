@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>vedio test</title>
+    <script src="../jquery/jquery-1.10.2.min.js"></script>
+    <script src="JSMap.js"></script>
+    <!--<script src="MultiScreen.js"></script>-->
+    <script src="VideoMonitor.js"></script>
+</head>
+<body>
+    <div id="players"  STYLE="width: 800px;height: 500px;">
+    </div>
+    <div>
+        <input type="button" value="stop" onclick="pauseVideo()"/>
+        <input type="button" value="restart" onclick="startVideo()"/>
+        <input type="button" value="snapShot(抓图)" onclick="haoTianVideo.localPicture()"/>
+        <input type="button" disabled value="开始录像" onclick="haoTianVideo.startRecord()"/>
+        <input type="button" disabled value="结束录像" onclick="haoTianVideo.stopRecord()"/>
+        <input type="button" value="全屏" onclick="haoTianVideo.viewFullSize()"/><br/>
+        <input type="button" disabled  value="获取视频信息" onclick="haoTianVideo.getVideoExist()"/>
+    </div>
+<script>
+    function pauseVideo(){
+        haoTianVideo.stopVideo();
+    }
+    function startVideo(){
+        var p = haoTianVideo.getPlayer();
+        p.Play();
+    }
+    haoTianVideo.login();
+    haoTianVideo.playHotanVideo("33T1WZ/KX1000217403");// 33T1WZ/KX1000217403 33T1ZS/KX3000119701
+</script>
+</body>
+</html>

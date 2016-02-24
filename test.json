@@ -1,0 +1,306 @@
+[
+    {
+        "id": "10",
+        "text": "八队",
+        "target": {
+            "jQuery19007521976055679563": 82
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "37",
+        "text": "杨爱龙",
+        "target": {
+            "jQuery19007521976055679563": 71
+        },
+        "checked": true
+    },
+    {
+        "id": "45",
+        "text": "朱克平",
+        "target": {
+            "jQuery19007521976055679563": 31
+        },
+        "checked": true
+    },
+    {
+        "id": "41",
+        "text": "刘海江",
+        "target": {
+            "jQuery19007521976055679563": 107
+        },
+        "checked": true
+    },
+    {
+        "id": "39",
+        "text": "龙茂盛",
+        "target": {
+            "jQuery19007521976055679563": 118
+        },
+        "checked": true
+    },
+    {
+        "id": "40",
+        "text": "程兴旺",
+        "target": {
+            "jQuery19007521976055679563": 119
+        },
+        "checked": true
+    },
+    {
+        "id": "42",
+        "text": "袁  宇",
+        "target": {
+            "jQuery19007521976055679563": 120
+        },
+        "checked": false
+    },
+    {
+        "id": "38",
+        "text": "杨勇鹏",
+        "target": {
+            "jQuery19007521976055679563": 121
+        },
+        "checked": false
+    },
+    {
+        "id": "44",
+        "text": "邓  坤",
+        "target": {
+            "jQuery19007521976055679563": 122
+        },
+        "checked": false
+    },
+    {
+        "id": "46",
+        "text": "林凯根",
+        "target": {
+            "jQuery19007521976055679563": 123
+        },
+        "checked": false
+    },
+    {
+        "id": "43",
+        "text": "王爱国",
+        "target": {
+            "jQuery19007521976055679563": 124
+        },
+        "checked": false
+    },
+    {
+        "id": "11",
+        "text": "八一组",
+        "target": {
+            "jQuery19007521976055679563": 125
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "47",
+        "text": "成若军",
+        "target": {
+            "jQuery19007521976055679563": 126
+        },
+        "checked": false
+    },
+    {
+        "id": "3",
+        "text": "二大队",
+        "target": {
+            "jQuery19007521976055679563": 127
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "19",
+        "text": "张国祥",
+        "target": {
+            "jQuery19007521976055679563": 128
+        },
+        "checked": false
+    },
+    {
+        "id": "18",
+        "text": "蔡湘陵",
+        "target": {
+            "jQuery19007521976055679563": 129
+        },
+        "checked": false
+    },
+    {
+        "id": "15",
+        "text": "刘耀谷",
+        "target": {
+            "jQuery19007521976055679563": 130
+        },
+        "checked": false
+    },
+    {
+        "id": "16",
+        "text": "付红华",
+        "target": {
+            "jQuery19007521976055679563": 131
+        },
+        "checked": false
+    },
+    {
+        "id": "17",
+        "text": "张振祥",
+        "target": {
+            "jQuery19007521976055679563": 132
+        },
+        "checked": false
+    },
+    {
+        "id": "14",
+        "text": "李建国",
+        "target": {
+            "jQuery19007521976055679563": 133
+        },
+        "checked": false
+    },
+    {
+        "id": "4",
+        "text": "三队",
+        "target": {
+            "jQuery19007521976055679563": 134
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "20",
+        "text": "黄  鹤",
+        "target": {
+            "jQuery19007521976055679563": 135
+        },
+        "checked": false
+    },
+    {
+        "id": "21",
+        "text": "王  军",
+        "target": {
+            "jQuery19007521976055679563": 136
+        },
+        "checked": false
+    },
+    {
+        "id": "5",
+        "text": "四队",
+        "target": {
+            "jQuery19007521976055679563": 137
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "23",
+        "text": "龙江辉",
+        "target": {
+            "jQuery19007521976055679563": 138
+        },
+        "checked": false
+    },
+    {
+        "id": "22",
+        "text": "陈红霞",
+        "target": {
+            "jQuery19007521976055679563": 139
+        },
+        "checked": false
+    },
+    {
+        "id": "6",
+        "text": "五队",
+        "target": {
+            "jQuery19007521976055679563": 140
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "24",
+        "text": "宋谷油",
+        "target": {
+            "jQuery19007521976055679563": 141
+        },
+        "checked": false
+    },
+    {
+        "id": "26",
+        "text": "许建武",
+        "target": {
+            "jQuery19007521976055679563": 142
+        },
+        "checked": false
+    },
+    {
+        "id": "25",
+        "text": "张钢毅",
+        "target": {
+            "jQuery19007521976055679563": 143
+        },
+        "checked": false
+    },
+    {
+        "id": "8",
+        "text": "六队",
+        "target": {
+            "jQuery19007521976055679563": 144
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "33",
+        "text": "易晓红",
+        "target": {
+            "jQuery19007521976055679563": 145
+        },
+        "checked": false
+    },
+    {
+        "id": "32",
+        "text": "苏桂红",
+        "target": {
+            "jQuery19007521976055679563": 146
+        },
+        "checked": false
+    },
+    {
+        "id": "9",
+        "text": "七队",
+        "target": {
+            "jQuery19007521976055679563": 147
+        },
+        "checked": false,
+        "state": "open"
+    },
+    {
+        "id": "35",
+        "text": "廖明定",
+        "target": {
+            "jQuery19007521976055679563": 148
+        },
+        "checked": false
+    },
+    {
+        "id": "36",
+        "text": "王泽群",
+        "target": {
+            "jQuery19007521976055679563": 149
+        },
+        "checked": false
+    },
+    {
+        "id": "34",
+        "text": "叶  剑",
+        "target": {
+            "jQuery19007521976055679563": 150
+        },
+        "checked": false
+    }
+]

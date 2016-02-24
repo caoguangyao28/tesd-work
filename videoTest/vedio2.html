@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<object id="plugin0" CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB' width="352" height="288">
+</object><br />
+<a href="#" onclick="javascript:changeSize()">切换大小</a> <br />
+<a href="#" onclick="javascript:record()">录像</a> <br />
+<a href="#" onclick="javascript:stoprecord()">停止录像</a> <br />
+<a href="#" onclick="javascript:snapshot()">抓图</a> <br />
+</body>
+<script>
+    var playObj = document.getElementById('plugin0');
+    playObj.UseMediaServer('115.236.100.146');
+    playObj.UseTCP();//视频传输方式
+
+    playObj.UseLiveAlias("33T1WZ/KX1000217403");//设置要播放的视频编号
+    playObj.KeepAspectRatio(false);//屏幕自适应
+    //        p.EnableContextMenu(true);//控制栏 没效果
+    //        p.EnableFlowControl(true,true);//拖到工具
+    playObj.Play();
+</script>
+</html>

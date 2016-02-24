@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实时预览demo</title>
+    <style>
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="../jquery/jquery-1.10.2.min.js"></script>
+    <script src="JSMap.js"></script>
+    <!--视频控制操作 统一入口封装-->
+    <!--<script src="VideoAdapter.js"></script>-->
+    <!--//控件功能 底层封装-->
+    <script src="VedioPlayer_HIK.js"></script>
+    <!-- 以下是事件触发函数接口 -->
+    <script language="javascript" for="playerObjPlug" event="FireWindowsNumber(iSel)">
+        szMsg = "窗口分割消息,窗口数" + iSel;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireSelectWindow(iSel)">
+        szMsg = "窗口选择消息,窗口" + iSel;
+//        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStartRealPlay(iSel)">
+        szMsg = "开始预览消息" + iSel;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStopRealPlay(iSel)">
+        szMsg = "停止预览消息" + iSel ;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStopPreviewAll()">
+        szMsg = "停止所有预览消息" ;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireOpenSound(iSel)">
+        szMsg = "打开声音消息" ;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireCloseSound(iSel)">
+        szMsg = "关闭声音消息" ;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireChangeWindow(iFrom,iTo)">
+        szMsg = "互换窗口消息"+ "从" +iFrom+"到"+iTo;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FirePTZCtrl(iWindowID,iCtrlID,iSpeed)">
+        szMsg = "云台控制消息:"+ "窗口:" +iWindowID+"控制:"+iCtrlID+"速度:"+ iSpeed;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStartRecord(iWindowID)">
+        szMsg = "开始录像"+ iWindowID;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStopRecord(iWindowID)">
+        szMsg = "停止录像"+ iWindowID;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireCatchPic(szPath,iWindowID)">
+        szMsg = "抓图"+ "路径" +szPath+"窗口"+iWindowID;
+        console.log(szMsg);
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStartPlayBack(lWindowID)">
+
+    </script>
+
+    <script language="javascript" for="playerObjPlug" event="FireStopPlayBack(lWindowID)">
+
+    </script>
+
+    <script>
+        var vedioType = 'MONITOR';
+        $(function () {
+            LoginCenter.login();//登录初始话控件
+            Camera.setDivMode(4);//默认
+            Camera.selWindow(1);//设置选择 窗口 index start 0
+//            alert(Camera.getSelectedWindow());
+
+        })
+        function StartPlayView(){
+            var tfId = "";//设备id，
+            Camera.play(tfId);//Vedio 高于
+        }
+
+        function CatchPicBMP(){
+
+        }
+
+    </script>
+</head>
+<body style="width: 100%;height: 100%;">
+<div style="width: 25%;height: 100%;float: left;">
+    <!-- 功能按钮区 -->
+    <table width="100%" style="border: thin solid #C0C0C0" >
+        <tr>
+            <td width="50%" align="center"><input type="button" value="开始预览播放" onclick="StartPlayView()" /></td>
+            <td width="50%" align="center"><!--<input type="button" value="空闲预览" onclick="StartPlayView_Free()" />--></td>
+        </tr>
+<!--        <tr>
+            <td align="center"><input type="button" value="指定预览" onclick="StartPlayView_InWnd()" /></td>
+            <td align="center">
+                <select id="SelectWnd" name="D2">
+                    <option value = "0">0</option>
+                    <option value = "1">1</option>
+                    <option value = "2">2</option>
+                    <option value = "3">3</option>
+                </select></td>
+        </tr>-->
+        <tr>
+            <td align="center"><input type="button" value="关闭所有" onclick = "Camera.closeAllPlayer()" /></td>
+            <td align="center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center">设置抓图格式：</td>
+            <td align="center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center"><input type="button" value="BMP格式"onclick = "Camera.setSavePath()" /></td>
+            <td align="center"><input type="button" value="JPG格式" onclick = "Camera.setSavePath()" /></td>
+        </tr>
+    </table>
+    <br />
+    <div style="text-align:left;background-color: #C0C0C0">云台控制</div>
+    请选中需要控制的窗口
+    <br />
+    <table width="100%" style="border: thin solid #C0C0C0">
+        <tr>
+            <td width="40%">
+                <table width="100%" >
+                    <tr>
+                        <td width="33%" align="center"><input type="button" class="ptzBtn" value="左上" onmousedown="Camera.PTZControlO('TOP_LEFT', 'MOUSE_DOWN');" onmouseup="Camera.PTZControlO('TOP_LEFT', 'MOUSE_UP');" /></td>
+                        <td width="33%" align="center"><input type="button" class="ptzBtn" value="上"  /></td>
+                        <td width="34%" align="center"><input type="button" class="ptzBtn" value="右上"  /></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="button" class="ptzBtn" value="左" /></td>
+                        <td align="center"><input type="button" class="ptzBtn" value="自转" /></td>
+                        <td align="center"><input type="button" class="ptzBtn" value="右"/></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="button" class="ptzBtn" value="左下"/></td>
+                        <td align="center"><input type="button" class="ptzBtn" value="下"/></td>
+                        <td align="center"><input type="button" class="ptzBtn" value="右下"/></td>
+                    </tr>
+                </table>
+            </td>
+            <td width="20%"><input type="button" class="ptzBtn" value="停止"  /></td>
+            <td width="40%">
+                <table width="100%" >
+                    <tr>
+                        <td width="33%" align="center"><input type="button" value="+"  /></td>
+                        <td width="33%" align="center">焦距</td>
+                        <td width="34%" align="center"><input type="button" value="-" /></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="button" value="+" /></td>
+                        <td align="center">焦点</td>
+                        <td align="center"><input type="button" value="-"  /></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="button" value="+"  /></td>
+                        <td align="center">光圈</td>
+                        <td align="center"><input type="button" value="-"  /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" style="border: thin solid #C0C0C0">
+        <tr>
+            <td width="40%"><input type="button" value="调用预置点" onclick="GetPt()" /></td>
+            <td width="60%"><select style="width:130px" id="SelectGetpt">
+                <option value = "0">0</option>
+                <option value = "1">1</option>
+                <option value = "2">2</option>
+                <option value = "3">3</option>
+                <option value = "4">4</option>
+                <option value = "5">5</option>
+                <option value = "6">6</option>
+                <option value = "7">7</option>
+                <option value = "8">8</option>
+                <option value = "9">9</option>
+                <option value = "10">10</option>
+                <option value = "11">11</option>
+                <option value = "12">12</option>
+                <option value = "13">13</option>
+                <option value = "14">14</option>
+                <option value = "15">15</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td width="40%"><input type="button" value="设置预置点" onclick="SetPt()" /></td>
+            <td width="60%"><select style="width:130px" id="SelectSetpt">
+                <option value = "0">0</option>
+                <option value = "1">1</option>
+                <option value = "2">2</option>
+                <option value = "3">3</option>
+                <option value = "4">4</option>
+                <option value = "5">5</option>
+                <option value = "6">6</option>
+                <option value = "7">7</option>
+                <option value = "8">8</option>
+                <option value = "9">9</option>
+                <option value = "10">10</option>
+                <option value = "11">11</option>
+                <option value = "12">12</option>
+                <option value = "13">13</option>
+                <option value = "14">14</option>
+                <option value = "15">15</option>
+            </select></td>
+        </tr>
+    </table>
+    <br />
+</div>
+</div>
+<div style="width: 73%;height: 100%;float: left;">
+    <div id="players" STYLE="width: 100%;height: 100%;">
+
+    </div>
+</div>
+</body>
+</html>

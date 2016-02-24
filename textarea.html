@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>textarea 换行符 匹配替换</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+
+        })
+        function tihuan(){
+           var content = $('#test').val();
+            content = content.replace("\n","<br>");
+            $('#after').html(content);
+        }
+    </script>
+</head>
+<body>
+原输入：
+<textarea name="test" id="test" cols="30" rows="10">
+
+</textarea>
+<button onclick="tihuan()">tihuan</button>
+替换后：
+<div id="after">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>playBackDemo</title>
+    <script src="../jquery/jquery-1.10.2.min.js"></script>
+	<script src="JSMap.js"></script>
+	<script src="VedioRecordPlay_HIK.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            LoginCenter.login();
+            //CameraRecord.setPlayWndOne();
+			//CameraRecord.selWindow(2);
+        });
+
+
+		var ocxObject;
+
+		//var config = "<?xml version='1.0' encoding='UTF-8'?><Message><Window index='1' /><Camera><Id>18</Id><IndexCode>14082506001310010872</IndexCode><Name>DS-2CD4032FWD-41.100-Camera 01</Name><DevType>0</DevType><RecLocation>2</RecLocation></Camera><Query><ZoneId>1</ZoneId><Vrm ip='10.21.36.25' port='6300' /></Query><Privilege>7</Privilege></Message>";
+
+		function setConfig(){
+			var configN = document.getElementById("config").value;
+			ocxObject.SetPlayBackParam(configN);
+		}
+
+		   /*****搜索录像******/
+		function StartQueryRecord(){
+			StartTime = document.getElementById("TextStartTime").value;
+			EndTime = document.getElementById("TextEndTime").value;
+			RecType = document.getElementById("TextRecType").value;
+//            strXML = "<?xml version='1.0'?><Message><Time><!--录像开始时间--><Begin>" + StartTime + "</Begin>" +
+//                    "<!--录像结束时间--><End>" + EndTime + "</End></Time>" +
+//                    "<!--录像类型1-计划录像2-移动录像4-报警录像16-手动录像23-全部录像--><RecType>" + RecType +
+//                    "</RecType></Message>";
+//			ocxObject.StartQueryRecord(strXML);
+
+			if(CameraRecord.nPBType == 1){//分段查询
+				CameraRecord.startSectionQuery(12,StartTime,EndTime);
+			}else{
+				CameraRecord.startQueryRecord(StartTime,EndTime);
+			}
+		}
+
+	</script>
+	<!-- 以下是事件触发函数接口 -->
+
+	<!-- 某通道开放回放成功触发 -->
+	<script language="javascript" for="playBackOcx" event="FireStartPlayBack(winId)">
+		var szMsg = "正在回放窗口：" + winId;
+		console.log(szMsg);
+	</script>
+<!--停止某通道回放成功-->
+	<script language="javascript" for="playBackOcx" event="FireStopBack(winId)">
+		var szMsg = "停止回放窗口：" + winId;
+		console.log(szMsg);
+	</script>
+	<!--下载完成时触发-->
+	<script language="javaScript" for="playBackOcx" event="FireDownload(winId,xmlRes)">
+		var szMsg = "下载窗口：" + winId+' 信息描述：'+ xmlRes;
+		console.log(szMsg);
+	</script>
+	<!--开始查询回放成功时触发-->
+	<script language="javaScript" for="playBackOcx" event="FireStartSearchPlayBack(winId)">
+		var szMsg = "查询回放成功窗口：" + winId;
+		console.log(szMsg);
+	</script>
+	<!--抓图成功时触发-->
+	<script language="javaScript" for="playBackOcx" event="FireSnap(xmlRes)">
+		var szMsg = "抓图返回：" + xmlRes;
+		console.log(szMsg);
+	</script>
+	<!--回放锁定成功-->
+	<script language="javaScript" for="playBackOcx" event="FireLock(winId)">
+		var szMsg = "锁定窗口：" + winId;
+		console.log(szMsg);
+	</script>
+	<!--回放解锁成功-->
+	<script language="javaScript" for="playBackOcx" event="FireUnLock(winId)">
+		var szMsg = "解锁窗口：" + winId;
+		console.log(szMsg);
+	</script>
+</head>
+<body>
+	 <!-- 61978326-6772-4595-9EC3-D23C5CD5E61F 5DEF5889-AD46-4FC0-AEBE-B54E6CD71C96 -->
+	<div id="players" style="width: 800px;height: 500px;">
+
+	</div>
+	<div>1.请调用webservice接口CuService中的getVrmServiceByCameraIndexCodes方法来获得参数报文，把获得的XML按文档说明额外设置后填入下方的文本域</div>
+	<div id = "preview">
+		<tr>
+		<td>
+		  <label for="config"></label>
+		  <textarea name="config" id="config" cols="45" rows="5" value=""></textarea>
+		  <input type="button" name="设置监控点参数"  value="设置监控点参数" onClick="CameraRecord.setConfig(12);">
+		</td>
+		</tr>
+	</div>
+	<div>2.设置搜索时间</div>
+	<div>
+		 <table width="50%" style="border: thin solid #C0C0C0" >
+                <tr>
+                    <td width="25%" align="center">开始时间</td>
+                    <td width="75%"><input id="TextStartTime" style="width:130px" type="text" value="2014-08-26 00:00:00" /></td>
+                </tr>
+                <tr>
+                    <td align="center">结束时间</td>
+                    <td><input id="TextEndTime" style="width:130px" type="text" value="2014-08-26 23:59:59" /></td>
+                </tr>
+                <tr>
+                    <td align="center">录像类型</td>
+                    <td><input id="TextRecType" style="width:130px" type="text" value="23" /></td>
+                </tr>
+                <tr>
+                    <td align="center">&nbsp;</td>
+                    <td><input type="button" value="开始搜索" onclick = "StartQueryRecord()" /></td>
+                </tr>
+		 </table>
+	</div>
+	 <div>3.其它设置操作</div>
+	 <div>
+		 设置回放模式 0：常规回放  1：分段回放 2，事件回放 <input type="button" value="设置回放模式" onclick="CameraRecord.setPlayBackType(1,4)"/><br/>
+		 设置分段数(4) <input type="button" value="分段回放分段数" onclick="CameraRecord.changeSectionNum(4)"/><br/>
+		 设置本地参数（抓图格式 路径 等） <input type="button" value="本地参数" onclick="CameraRecord.setLocalParam()"/><br/>
+		 停止回放 <input type="button" value="停止" onclick="CameraRecord.stopPlayBack()"/><br/>
+		 停止所有回放 <input type="button" value="停止所有" onclick="CameraRecord.stopAllPlayBack()"/><br/>
+		 清除回放参数 <input type="button" value="清除回放参数" onclick="CameraRecord.clearPlayBackParam()"/>
+	 </div>
+</body>
+</html>

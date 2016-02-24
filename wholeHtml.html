@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all page</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+
+        }
+        #players div{
+            clear: none;
+            float: left;
+        }
+    </style>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script src="videoTest/JSMap.js"></script>
+    <script src="videoTest/MultiScreen.js"></script>
+    <script src="videoTest/VideoMonitor.js"></script>
+</head>
+<body>
+<div class="MultiScreen" style="width: 100%;height: 100%;min-width:640px;min-height:360px;background-color: #0c5bb0;">
+    <div style="height: 100%;width:100%;overflow:hidden;background-color: black;">
+        <div id="players" style="width: 100%;height: 100%;float:left;background-color: red;" >
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+<script>
+    haoTianVideo.isMultiScreen = true;
+    haoTianVideo.login();
+    multiscreen.Init('players');
+    multiscreen.SetScreen(4);
+</script>
+</html>

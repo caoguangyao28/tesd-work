@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>GraphyView</title>
+    <script src="../handlebartest/hanlebas-v4.0.5.min.js"></script>
+    <script src="../jquery/jquery-1.10.2.min.js"></script>
+    <script src="GraphyViewPublic.js"></script>
+    <script>
+        $(function(){
+            var temp = getTemplate('dateGroup.html');
+            var template = Handlebars.compile(temp);
+            //页面数据
+            var context = {title: "My New Post", content: "This is my first post!"};
+            var html = template();//context
+            $("#container").html(html);
+
+        });
+        function getTemplate(url){
+            var retHtml;
+            $.ajax({
+                url:url,
+                async:false,
+                dataType:'html',
+                success: function (ret) {
+                    retHtml = ret;
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+            return retHtml;
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+
+</div>
+</body>
+</html>

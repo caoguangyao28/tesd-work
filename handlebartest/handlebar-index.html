@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>handlebar test</title>
+    <script src="handlebars-v4.0.5.js"></script>
+    <script src="../jquery/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            debugger;
+//            var resource = $("#tpl").html();
+            var template = Handlebars.compile('test.html');
+            var context = { name: "zhaoshuai", content: "learn Handlebars"};
+            var html    = template(context);
+            $('#test').html(html);
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div id="test">
+
+    </div>
+</div>
+<script id="tpl" type="text/x-handlebars-template">
+    <div class="demo">
+        <h1>{{name}}</h1>
+        <p>{{content}}</p>
+    </div>
+</script>
+</body>
+</html>

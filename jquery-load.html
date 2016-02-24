@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loading</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script>
+        function loadHtml(){
+            $('#loadframe').load('testpice.html');
+        }
+    </script>
+</head>
+<body>
+    <div id="loadframe" style="width:800px;height: 500px;background-color: #0c5bb0;">
+        
+    </div>
+    <a href="javascript:void(0)" onclick="loadHtml()">load</a>
+</body>
+</html>
