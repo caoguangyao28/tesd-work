@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form2js</title>
+    <script src="form2js.js"></script>
+
+</head>
+<body>
+<form action="#" id="test">
+    <lable>test1</lable>
+    <input  name="test1" type="text" value="12121"/>
+    <lable>test2</lable>
+    <input name="test2" type="text" value="1"/>
+    <lable>test3</lable>
+    <input name="test3" type="text" value="2"/>
+    <lable>test4</lable>
+    <input name="test4" type="text" value=" "/>
+    <lable>test5</lable>
+    <input name="test5" type="text" value="23"/>
+    <select name="test6" id="">
+        <option value="1" selected>111</option>
+        <option value="2">22</option>
+        <option value="3">33</option>
+    </select>
+</form>
+<script>
+    var formTest = form2js("test");
+    console.log(formTest);
+</script>
+</body>
+</html>
