@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:/WebstormProjects/tesd-work/.idea/tesd-work.iml" filepath="D:/WebstormProjects/tesd-work/.idea/tesd-work.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tesd-work.iml" filepath="$PROJECT_DIR$/.idea/tesd-work.iml" />
     </modules>
   </component>
 </project>
