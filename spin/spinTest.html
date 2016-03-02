@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title>spinTest</title>
     <script src="spin.js"></script>
+    <style>
+        .test{
+            color: #000;
+        }
+        html{
+            background-color: rgba(0,0,0,0);
+        }
+        body{
+            background: none;
+        }
+    </style>
 </head>
 <body>
 <div>
-    <div style="widht:500px;height: 500px;background-color: #000;">
+    <div style="widht:500px;height: 500px;background-color: rgba(0,0,0,0);">
         <div id="foo">
         </div>
     </div>
@@ -16,12 +27,12 @@
 <script>
     var target = document.getElementById('foo');
     var spinopts = {
-        lines: 8, // loading小块的数量
+        lines: 10, // loading小块的数量
         length: 5, // 小块的长度
         width: 4, // 小块的宽度
-        radius: 5, // 整个圆形的半径
-        corners: 1, // 小块的圆角，越大则越圆
-        color: '#b5b5b5', // 颜色
+        radius: 20, // 整个圆形的半径
+        corners: 0.3, // 小块的圆角，越大则越圆
+        color: '#000', // 颜色
         speed: 1, // 变换速度
         trail: 60, // 余晖的百分比
         className: 'spinner', // 给loading添加的css样式名
