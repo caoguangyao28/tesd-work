@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>vue 实列特性</title>
@@ -14,7 +14,21 @@
     <input type="text" v-model="message" placeholder="edit me"><br/>
 
     <input type="checkbox" id="checkbox" v-model="checked">
-    <label for="checkbox">{{ checked }}</label>
+    <label for="checkbox">{{ checked }}</label><br/>
+
+    <!--<select v-model="selected">-->
+    <!--<option selected value="a">A</option>-->
+    <!--<option value="b">B</option>-->
+    <!--<option value="c">C</option>-->
+<!--</select>-->
+    <!--<span>Selected: {{ selected }}</span><br/>-->
+
+    <select  v-model="selected">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
 </form>
 
 
@@ -23,23 +37,24 @@
         el: '#app',
         data: {
             message: 'Hello Vue.js!'
-        },
-        init: function () {
-            console.log('start inint');
-        },
-        created: function () {
-            console.log('解析实列完成 未开始解析 dom');
+
         }
     });
     var formtest = new Vue({
         el: '#formtest',
         data: {
             message: 'Hello Vue.js!',
-            checked:false
+            checked:false,
+            selected: 'A',
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ]
         },
         watch:{
-            message: function () {
-
+            selected: function (val) {
+                console.log(val);
             }
         }
     });
