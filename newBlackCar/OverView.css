@@ -91,7 +91,7 @@ html,body{
 .imgContainer {
     position: absolute;
     width: 20%;
-    height: 100px;
+    max-height: 100px;
     background-color: #ffffff;
     top: 15%;
     left: 10%;
@@ -104,15 +104,21 @@ html,body{
     position: absolute;
     top: 15%;
     right: 20px;
-    font-size: 3em;
+    font-size: 2.6em;
     font-weight: bold;
-    color: #ffffff;
+    color: #fff;
     text-align: right;
 }
 
+.tongjiContainer .number{
+    display: inline-block;
+    float: right;
+}
+
 .tongjiContainer .danwei {
-    font-size: 0.7em;
+    font-size: 0.5em;
     font-weight: normal;
+    float: right;
 }
 .charBg{
     height: 94%;
