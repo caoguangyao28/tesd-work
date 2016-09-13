@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testTrigger</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            var test = function () {
+                alert($(this).html());
+            }
+            $('#testDiv').click(test);
+
+            $('#testDiv').trigger('click');//代码层触发 click 事件
+        })
+    </script>
+</head>
+<body>
+    <div id="testDiv">hello world</div>
+</body>
+</html>
