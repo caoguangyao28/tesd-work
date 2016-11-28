@@ -1,0 +1,102 @@
+html{
+  width: 100%;
+  height: 100%;
+}
+body{
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #42b983;
+  div{
+    box-sizing: border-box;
+  }
+  .allArea{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    .arrow{
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: blue;
+      border-radius: 25px;
+      left: 130px;
+      top: 25px;
+    }
+    .huan{
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      border-radius: 75px;
+      left: -75px;
+      top: -25px;
+    }
+    .buttons{
+      width: 110px;
+      height: 220px;
+      position: absolute;
+      border-radius: 0 110px 110px 0;
+      border: 2px solid yellow;
+      left: 152px;
+      top: -100px;
+      overflow: hidden;
+      border-left: 0;
+      .shanbox{
+        width: 110px;
+        height: 110px;
+        border-radius: 0 110px 0 0;
+        transform-origin: 0 110px;
+      }
+      .boxone{
+
+        border:50px solid blue;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        position: absolute;
+        transform: rotate(-30deg);
+      }
+      .boxtwo{
+
+        border: 50px solid blue;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        transform: rotate(61deg);
+        position: absolute;
+      }
+      .boxthree{
+
+        //background-color: blue;
+        border: 50px solid blue;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        transform: rotate(121deg);
+        position: absolute;
+      }
+      .boxfour{
+        //background-color: blue;
+        border: 50px solid yellow;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        transform: rotate(120deg);
+        position: absolute;
+      }
+      .boxfive{
+
+        border: 50px solid yellow;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        transform: rotate(60deg);
+        position: absolute;
+      }
+      .boxone,.boxtwo,.boxthree,.boxfour,.boxfive{
+        //border: 2px solid yellow;
+        top: 0px;
+      }
+      .activeB{
+        border-color: green !important;
+      }
+    }
+  }
+}

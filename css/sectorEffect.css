@@ -1,0 +1,99 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #42b983;
+}
+body div {
+  box-sizing: border-box;
+}
+body .allArea {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+body .allArea .arrow {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: blue;
+  border-radius: 25px;
+  left: 130px;
+  top: 25px;
+}
+body .allArea .huan {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 75px;
+  left: -75px;
+  top: -25px;
+}
+body .allArea .buttons {
+  width: 110px;
+  height: 220px;
+  position: absolute;
+  border-radius: 0 110px 110px 0;
+  border: 2px solid yellow;
+  left: 152px;
+  top: -100px;
+  overflow: hidden;
+  border-left: 0;
+}
+body .allArea .buttons .shanbox {
+  width: 110px;
+  height: 110px;
+  border-radius: 0 110px 0 0;
+  transform-origin: 0 110px;
+}
+body .allArea .buttons .boxone {
+  border: 50px solid blue;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  position: absolute;
+  transform: rotate(-30deg);
+}
+body .allArea .buttons .boxtwo {
+  border: 50px solid blue;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  transform: rotate(61deg);
+  position: absolute;
+}
+body .allArea .buttons .boxthree {
+  border: 50px solid blue;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  transform: rotate(121deg);
+  position: absolute;
+}
+body .allArea .buttons .boxfour {
+  border: 50px solid yellow;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  transform: rotate(120deg);
+  position: absolute;
+}
+body .allArea .buttons .boxfive {
+  border: 50px solid yellow;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  transform: rotate(60deg);
+  position: absolute;
+}
+body .allArea .buttons .boxone,
+body .allArea .buttons .boxtwo,
+body .allArea .buttons .boxthree,
+body .allArea .buttons .boxfour,
+body .allArea .buttons .boxfive {
+  top: 0px;
+}
+body .allArea .buttons .activeB {
+  border-color: green !important;
+}
