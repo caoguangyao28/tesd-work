@@ -8,7 +8,7 @@
             var pic = document.getElementById("preview"), file = document.getElementById("f");
             var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
             // gif在IE浏览器暂时无法显示
-            if (ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+            if (ext != 'png' && ext != 'jpg' && ext != 'jpeg' && ext != 'bmp') {//新增bmp 支持
                 alert("图片的格式必须为png或者jpg或者jpeg格式！");
                 return;
             }
