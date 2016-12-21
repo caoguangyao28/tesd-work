@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css 弹性布局</title>
+    <style>
+        .flex-container {
+          list-style: none;
+
+           display: flex;
+           flex-direction: column;
+           flex-wrap: wrap;
+        }
+
+        .flex-item {
+           padding: 5px;
+        }
+        .one{
+            width: 200px;
+            height: 500px;
+            background-color: blue;
+        }
+        .two{
+            /*width: 200px;*/
+            flex:auto;
+            height: 800px;
+            display: inline-block;
+            float: left;
+            background-color: green;
+        }        
+        .div-flex-container{
+           display: flex;
+           flex-direction: row;
+           flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<!--     <ul class="flex-container">
+        <li class="flex-item">
+            <img src="http://placehold.it/300&text=1"></li>
+        <li class="flex-item">
+            <img src="http://placehold.it/300&text=2"></li>
+        <li class="flex-item">
+            <img src="http://placehold.it/300&text=3"></li>
+        <li class="flex-item">
+            <img src="http://placehold.it/300&text=4"></li>
+        <li class="flex-item">
+            <img src="http://placehold.it/300&text=5"></li>
+        <li class="flex-item">
+            <img src="http://placehold.it/300&text=6"></li>
+    </ul> -->
+    <div class="div-flex-container">
+        <div class="one"></div>
+        <div class="two"></div>
+<!--         <div class="two"></div>
+        <div class="two"></div>
+        <div class="two"></div>
+        <div class="two"></div>
+        <div class="two"></div>
+        <div class="two"></div> -->
+    </div>
+</body>
+</html>

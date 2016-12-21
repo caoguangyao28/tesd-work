@@ -37,7 +37,7 @@
 
         function html5Reader(file) {
             var file = file.files[0];
-            var reader = new FileReader();
+            var reader = new FileReader();//ie10 ie11 chorme```
             reader.readAsDataURL(file);
             reader.onload = function (e) {
                 var pic = document.getElementById("preview");
