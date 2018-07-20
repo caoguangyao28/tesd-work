@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 弹性盒子用例</title>
+    <style>
+        .flex-container {
+            width: 500px;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            /*flex-flow: row wrap;*/
+        }
+
+        .flex-item {
+            /*padding: 5px;*/
+            width: 200px;
+        }
+
+        /*.flex-item:last-child{*/
+             /*order: -1;*/
+        /*}*/
+
+        .flex-item:nth-child(1) {
+            /*flex-grow: 1;*/
+            flex-shrink: 1;
+        }
+
+        .flex-item:nth-child(2) {
+            /*flex-grow: 2;*/
+            flex-shrink: 2;
+        }
+
+        .flex-item:nth-child(3) {
+            /*flex-grow: 3;*/
+            flex-shrink: 3;
+        }
+
+        /*.flex-item:nth-child(1) {*/
+        /*flex: 1 1 auto;*/
+        /*/!*flex-grow 的值为 1，flex-shrink 的值为 1，flex-basis 的值为 0%*!/*/
+        /*}*/
+    </style>
+</head>
+<body>
+<ul class="flex-container">
+<li class="flex-item"><img src="" alt="1"/></li>
+<li class="flex-item"><img src="" alt="2"/></li>
+<li class="flex-item"><img src="" alt="3"/></li>
+<!--<li class="flex-item"><img src="" alt="4"/></li>-->
+<!--<li class="flex-item"><img src="" alt="5"/></li>-->
+<!--<li class="flex-item"><img src="" alt="6"/></li>-->
+</ul>
+</body>
+</html>

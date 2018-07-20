@@ -28,24 +28,25 @@ var haoTianVideo ={
      * 是否安装插件
      */
     isInstallActiveX : function () {
-        var np = navigator.plugins;
-        if(window.ActiveXObject){
-            //ie
-            try{
-                var comActiveX = new ActiveXObject("Htisoft.UMS.MediaPlayer.1");
-            }
-            catch(e){
-                return false;
-            }
-        }else if(np && np.length){
-            var pluginName = 'umsplayer';
-            // 非IE
-            for ( var i = 0; i < np.length; i++) {
-                if (np[i].name.toLowerCase().indexOf(pluginName.toLowerCase()) != -1)
-                    return true;
-            }
-            return false;
-        }
+        //var np = navigator.plugins;
+        //if(window.ActiveXObject){
+        //    //ie
+        //    //try{
+        //    //    var comActiveX = new ActiveXObject("Htisoft.UMS.MediaPlayer.1");
+        //    //}
+        //    //catch(e){
+        //    //    return false;
+        //    //}
+        //    return true;
+        //}else if(np && np.length){
+        //    var pluginName = 'umsplayer';
+        //    // 非IE
+        //    for ( var i = 0; i < np.length; i++) {
+        //        if (np[i].name.toLowerCase().indexOf(pluginName.toLowerCase()) != -1)
+        //            return true;
+        //    }
+        //    return false;
+        //}
         return true;
     },
 
@@ -58,37 +59,37 @@ var haoTianVideo ={
         if(haoTianVideo.isInstallActiveX()){
             result = true;
         }else{
-        	var msg = '请点击：';
-        	var down = '皓天平台视频控件下载';
-        	showConfirm(msg+"<a style='color: red' href='repository/plugins/MONITOR_PLUGIN_HOTAN.zip'>"+down+"</a>",function(){
-        			window.location.reload();
-        		},function(){
-        			//window.close();
-        		});
+        	//var msg = '请点击：';
+        	//var down = '皓天平台视频控件下载';
+        	//showConfirm(msg+"<a style='color: red' href='repository/plugins/MONITOR_PLUGIN_HOTAN.zip'>"+down+"</a>",function(){
+        	//		window.location.reload();
+        	//	},function(){
+        	//		//window.close();
+        	//	});
             //return result;
         }
 
         $("#players").empty();
         var playerHtml = "";
-        if (!haoTianVideo.isMultiScreen) {//控件只有一个
-            playerHtml = "<OBJECT id='playerObjPlug' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'" +
+        if (!haoTianVideo.isMultiScreen) {//控件只有一个 clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778[zhongfang] CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB[haotan]
+            playerHtml = "<OBJECT id='playerObjPlug' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'" +
                 " style='width: 100%; height: 100%;'></OBJECT>";
         } else { //CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'
-            playerHtml += "<div id='s1'><OBJECT id='playerObjPlug' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB' ></OBJECT></div>";
-            playerHtml += "<div id='s2'><OBJECT id='playerObjPlug1' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>";
-            playerHtml += "<div id='s3'><OBJECT id='playerObjPlug2' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>";
-            playerHtml += "<div id='s4'><OBJECT id='playerObjPlug3' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>";
-            playerHtml += "<div id='s5'><OBJECT id='playerObjPlug4' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s6'><OBJECT id='playerObjPlug5' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s7'><OBJECT id='playerObjPlug6' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s8'><OBJECT id='playerObjPlug7' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s9'><OBJECT id='playerObjPlug8' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s10'><OBJECT id='playerObjPlug9' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s11'><OBJECT id='playerObjPlug10' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s12'><OBJECT id='playerObjPlug11' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s13'><OBJECT id='playerObjPlug12' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s14'><OBJECT id='playerObjPlug13' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>"+
-            "<div id='s15'><OBJECT id='playerObjPlug14' CLASSID='CLSID:A1C6E4C8-BD77-4781-99DD-C7C86D9F7FBB'></OBJECT></div>";
+            playerHtml += "<div id='s1'><OBJECT id='playerObjPlug' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778' ></OBJECT></div>";
+            playerHtml += "<div id='s2'><OBJECT id='playerObjPlug1' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>";
+            playerHtml += "<div id='s3'><OBJECT id='playerObjPlug2' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>";
+            playerHtml += "<div id='s4'><OBJECT id='playerObjPlug3' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>";
+            playerHtml += "<div id='s5'><OBJECT id='playerObjPlug4' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s6'><OBJECT id='playerObjPlug5' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s7'><OBJECT id='playerObjPlug6' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s8'><OBJECT id='playerObjPlug7' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s9'><OBJECT id='playerObjPlug8' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s10'><OBJECT id='playerObjPlug9' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s11'><OBJECT id='playerObjPlug10' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s12'><OBJECT id='playerObjPlug11' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s13'><OBJECT id='playerObjPlug12' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s14'><OBJECT id='playerObjPlug13' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>"+
+            "<div id='s15'><OBJECT id='playerObjPlug14' CLASSID='clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778'></OBJECT></div>";
         }
         $("#players").append(playerHtml);
         return result;

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object click</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <!--<script language="javascript" for="ppvs" event="SelectWindow">-->
+        <!--alert('select');-->
+    <!--</script>-->
+    <script>
+        $(function () {
+           $('#ppvs')[0].oncontextmenu= function (e) {
+               alert('test1');
+           }
+            $('#ppvs2')[0].oncontextmenu= function (e) {
+               alert('test2');
+           }
+//            $('#aDiv')[0].mouseClick = function(event){
+//                debugger;
+//            }
+        });
+        function test(){
+            alert('111');
+        }
+        function test2(){
+            alert(2222);
+        }
+//         clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778 clsid:AC036352-03EB-4399-9DD0-602AB1D8B6B9
+    </script>
+</head>
+<body>
+<div id="aDiv" onclick="test2()" style="width: 800px;height: 600px;margin: 0 auto;">
+    <form onfocus="test()" style="width: 50%;height: 100%;float: left;">
+        <object classid="clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778" id="ppvs" width="100%" height="100%" name="ocx2"
+                title="视频"></object>
+    </form>
+    <form onfocus="test()" style="width: 50%;height: 100%;float: left;">
+        <object classid="clsid:EE4EA829-B8DA-4229-AC72-585AF45AD778" id="ppvs2" width="100%" height="100%" name="ocx2"
+                title="视频"></object>
+    </form>
+</div>
+</body>
+</html>

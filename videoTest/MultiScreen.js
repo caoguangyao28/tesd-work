@@ -20,7 +20,7 @@ function ScreenObj(p, i, aDiv, aObj) {
     //窗口号
     this.ScreenObject.ScreenIndex = i;
     //焦点事件
-    this.ScreenObject.onfocus = function() {
+    this.ScreenObject.oncontextmenu = function() {
         this.Parent.ChangeEvent(this.ScreenIndex);
     }
     this.ScreenObject.onclick = function(x, y) {
@@ -204,45 +204,6 @@ function MultiScreen() {
                 });
                 this.CurrCount = screenno;
                 return;
-        /**
-         case 6:
-         screenno = 6;
-         intDivParam = 3;
-         intWidth = pDiv.width() - intDivParam * 2;
-         intHeight = pDiv.height() - intDivParam * 2;
-         intAWidth = intWidth / intDivParam;
-         intAHeight = intHeight / intDivParam;
-         cDivs.each(function(i) {
-                    if (i == 0) {
-						$(this).show();
-						$(this).css({"width": (intAWidth * 2 + BorderWidth * 2) + "px", "height": (intAHeight * 2 + BorderWidth * 1.5) + "px"});
-                    } else if (i < screenno) {
-						$(this).show();
-						$(this).css({"width": intAWidth + "px", "height": intAHeight + "px"});
-                    }
-                });
-         this.CurrCount = screenno;
-         return;
-         **/
-        /**
-         * 6分屏改为两行三列
-         * modified by ding.hongyu@2013-12-27 14:09:26
-         */
-        /**
-         case 6:
-         screenno = 6;
-         intDivParam = 1;
-         intWidth = (pDiv.width() - intDivParam * 6) / 3;
-         intHeight = (pDiv.height() - intDivParam * 4) / 2;
-         cDivs.each(function(i) {
-                    if (i < screenno) {
-						$(this).show();
-						$(this).css({"width": intWidth + "px", "height": intHeight + "px"});
-                    }
-                });
-         this.CurrCount = screenno;
-         return;
-         */
             case 6:
                 screenno = 6;
                 intDivParam = 1;

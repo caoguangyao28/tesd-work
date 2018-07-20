@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止元素默认行为</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        //阻止元素默认事件--这里时a href 默认跳转
+        function stopDefault( e ) {
+            if ( e && e.preventDefault ){
+                e.preventDefault();
+            }else{
+                var eventT = event || window.event;
+                typeof eventT.preventDefault == "function" ? eventT.preventDefault() : eventT.returnValue = false;
+            }
+            return false;
+        }
+        function aHClick(e){
+            stopDefault(e);
+        }
+    </script>
+</head>
+<body>
+<a href="http://www.baidu.com" onclick="aHClick();" target="_blank">百度</a>
+<a href="http://www.sina.com" target="_blank">新浪</a>
+</body>
+</html>

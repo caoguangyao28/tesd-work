@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jdf Mytest</title>
+    <script type="text/javascript" src="../jquery/jquery-1.10.2.min.js"></script>
+    <script src="dist/jspdf.min.js"></script>
+    <script src="dist/jspdf.customfonts.min.js"></script>
+    <script src="dist/default_vfs.js"></script>
+    <script>
+        function savePdf() {
+            var doc = new jsPDF();
+            // 支持中文
+//            doc.addFileToVFS("PTSans.ttf", PTSans);
+//            doc.addFont('PTSans.ttf', 'PTSans', 'normal');
+            doc.addFont('msyh.ttf', 'msyh', 'normal');
+            doc.setFont('msyh');
+            var specialElementHandlers = {
+                '#editor': function(element, renderer){
+                    return true;
+                }
+            };
+            doc.text('你好  世界',15, 15);
+            doc.fromHTML($('body').get(0), 15, 45, {
+                'width': 170,
+                'elementHandlers': specialElementHandlers
+            }, function () {
+//                doc.text(15, 30, '你好');
+                doc.save("test.pdf");
+            });
+//            doc.save("test.pdf");
+        }
+    </script>
+</head>
+<body>
+<h3>hello world</h3>
+
+<p>
+    <i>文章段落</i>
+    <section>
+        你好啊 ！ 世界
+    </section>
+</p>
+<button onclick="savePdf()">执行</button>
+</body>
+</html>
