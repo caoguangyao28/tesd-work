@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6</title>
+    <script>
+        var name = 'test';
+        function testLet(){
+            let name = 'testlet';
+            console.log(name);
+        }
+
+        testLet();
+        console.log(name);
+
+        var a = [];
+
+        // 容易解决 非必要的闭包问题
+        for(let i = 0;i < 10;i++){
+            a[i] = function(){
+                console.log(i);
+            }
+        }
+
+        a[6]();
+        a[1]();
+
+
+        class Animal {
+            constructor() {
+                this.type = 'animal'
+            }
+
+            says(say) {
+                setTimeout(() => {
+                    console.log(this.type + ' says ' + say)
+                }, 1000);
+            }
+        }
+
+        var animal = new Animal();
+
+        animal.says('hi')
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

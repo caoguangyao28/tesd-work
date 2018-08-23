@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inputing</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <script>
+        var isChecking = null;
+        function inputing(){
+            if(isChecking){
+                clearTimeout(isChecking);
+            }
+            isChecking = setTimeout(function () {
+                console.log($('input').val());
+
+                clearTimeout(isChecking);
+            },500);
+        }
+    </script>
+</head>
+<body>
+    <input type="text" oninput="inputing()">
+</body>
+</html>

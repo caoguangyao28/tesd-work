@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深度拷贝</title>
+    <script type="application/javascript">
+        //浅拷贝现象 start
+        var father = {name:'father',age:30,job:['teacher','cook']};
+        function copy(obj){
+            var child = {};
+            for(var key in obj){
+                child[key] = obj[key];
+            }
+            return child;
+        }
+        var child1 = copy(father);
+        console.log(father);
+        child1.name = 'child1';
+        child1.age = '12';
+        console.log(child1);
+        console.log(father);
+        child1.job.push("study"); // 不同于 = []  创建新的 引用型数据 且赋值
+        console.log(child1);
+        console.log(father);// father.job 同时受影响
+
+        //浅拷贝现象结束 end
+
+        /**
+         * 实现深度拷贝
+         */
+        function deepCopy(obj){
+            return JSON.parse(JSON.stringify(obj));
+        }
+
+        //方法2
+        var cloneObj = function(obj){
+            var str, newobj = obj.constructor === Array ? [] : {};
+            if(typeof obj !== 'object'){
+                return;
+            } else if(window.JSON){
+                str = JSON.stringify(obj), //系列化对象
+                        newobj = JSON.parse(str); //还原
+            } else {//浏览器 兼容分支
+                for(var i in obj){
+                    newobj[i] = typeof obj[i] === 'object' ? cloneObj(obj[i]) : obj[i];//自调用分支
+                }
+            }
+            return newobj;
+        };
+
+        //方法3
+        function deepCopy(p,c){
+            c = c || {};
+            for (var i in p){
+                if(p.hasOwnProperty(i)){
+                    if(typeof p[i] === 'object'){
+                        c[i] = Array.isArray(p[i]) ? [] : {};
+                        deepCopy(p[i],c[i]);
+                    }else{
+                        c[i] = p[i];
+                    }
+                }
+            }
+            return c;
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
