@@ -7,7 +7,7 @@
     <script src="../jquery/jquery-1.10.2.min.js"></script>
     <script>
         $(function(){
-            var temp = getTemplate('test.html');
+            var temp = getTemplate('./test.html');
             var template = Handlebars.compile(temp);
             //页面数据
             var context = {title: "My New Post", content: "This is my first post!"};
