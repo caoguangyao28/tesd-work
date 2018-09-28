@@ -1,56 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>css3 弹性盒子用例</title>
     <style>
-        .flex-container {
-            width: 500px;
-            list-style: none;
+        html, body { height: 100%; background: lightgrey; margin: 0;}
+        .container {
+            /*webkit 浏览器*/
+            display: -webkit-flex;
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            /*flex-flow: row wrap;*/
+            /*flex-direction: row; !*方向 row | row-reverse | column | column-reverse; *!*/
+            /*flex-wrap: wrap;!* 换行 nowrap | wrap | wrap-reverse; *!*/
+            -webkit-flex-flow: row;
+            flex-flow: row; /*<flex-direction> || <flex-wrap>;*/
+            max-width: 1000px;
+            height: 100%;
+            margin: auto;
+            justify-content:flex-start; //flex-start | flex-end | center | space-between | space-around;
+        }
+        .main {
+            width: 60%;
+            margin: 20px 0;
+            padding: 7px;
+            background: deepskyblue;
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .left {
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .right {
+            -webkit-flex: 2;
+            flex: 2;
+        }
+        .nav {
+            margin: 20px 15px;
+            padding: 7px;
+            background: hotpink;
         }
 
-        .flex-item {
-            /*padding: 5px;*/
-            width: 200px;
+        .child-one{
+            width: 50px;
+            height: 50px;
+            background: #42b983;
         }
 
-        /*.flex-item:last-child{*/
-             /*order: -1;*/
-        /*}*/
-
-        .flex-item:nth-child(1) {
-            /*flex-grow: 1;*/
-            flex-shrink: 1;
+        .child-two{
+            width: 50px;
+            height: 50px;
+            background: #42b983;
         }
 
-        .flex-item:nth-child(2) {
-            /*flex-grow: 2;*/
-            flex-shrink: 2;
-        }
-
-        .flex-item:nth-child(3) {
-            /*flex-grow: 3;*/
-            flex-shrink: 3;
-        }
-
-        /*.flex-item:nth-child(1) {*/
-        /*flex: 1 1 auto;*/
-        /*/!*flex-grow 的值为 1，flex-shrink 的值为 1，flex-basis 的值为 0%*!/*/
-        /*}*/
     </style>
 </head>
 <body>
-<ul class="flex-container">
-<li class="flex-item"><img src="" alt="1"/></li>
-<li class="flex-item"><img src="" alt="2"/></li>
-<li class="flex-item"><img src="" alt="3"/></li>
-<!--<li class="flex-item"><img src="" alt="4"/></li>-->
-<!--<li class="flex-item"><img src="" alt="5"/></li>-->
-<!--<li class="flex-item"><img src="" alt="6"/></li>-->
-</ul>
+<div class="container">
+    <nav class="nav left"></nav>
+
+    <section class="main">
+        <div class="child-one">one</div>
+        <div class="child-two">two</div>
+    </section>
+
+    <nav class="nav right"></nav>
+</div>
 </body>
 </html>
