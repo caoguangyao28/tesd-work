@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>blog upload azure</title>
-    <script src="script/azure-storage.blob.js"></script>
+    <script src="script/azure-storage.blob.min.js" charset="UTF-8"></script>
 </head>
 <body>
     <button id="create-button">Create Container</button>
@@ -14,14 +14,16 @@
 </body>
 <script>
     // Blob-related code goes here
+    // 云账号配置
     const account = {
         name: 'YOUR_STORAGE_ACCOUNT_NAME',
         sas:  'YOUR_SAS'
     };
 
+    // 请求资源链接
     const blobUri = 'https://' + account.name + '.blob.core.windows.net';
     const blobService = AzureStorage.Blob.createBlobServiceWithSas(blobUri, account.sas);
-    //创建blob 容器
+    //创建blob 容器 存放文件
     document.getElementById('create-button').addEventListener('click',function() {
         blobService.createContainerIfNotExists('mycontainer',  function(error, container){
             if (error) {
