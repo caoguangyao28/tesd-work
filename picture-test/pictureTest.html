@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>picture test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        html,body{
+            /*width: 100%;*/
+        }
+        img{
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <picture>
+        <source media="(min-width: 320px) and (max-width: 750px)" srcset="img1.png" />
+        <source media="(min-width: 750px)" srcset="img2.jpg" />
+        <!--ie11 存在兼容性问题 source 不生效 得给img一个默认值-->
+        <img src="img2.jpg" alt="this is a picture">
+    </picture>
+</body>
+</html>
