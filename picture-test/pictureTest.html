@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
+    <!--meta 标签用于定义页面元信息 及 一些 name-value 对-->
     <meta charset="UTF-8">
-    <title>picture test</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>picture test</title>
+    <link rel="stylesheet" href="../css/selft.css">
+    <script src="jquery/jquery-1.10.2.min.js"></script>
     <style>
         html,body{
             /*width: 100%;*/
@@ -12,8 +16,12 @@
             max-width: 100%;
         }
     </style>
+    <script>
+
+    </script>
 </head>
 <body>
+    <!--这里就是网页可见内容的区域-->
     <picture>
         <source media="(min-width: 320px) and (max-width: 750px)" srcset="img1.png" />
         <source media="(min-width: 750px)" srcset="img2.jpg" />
