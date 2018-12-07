@@ -29,6 +29,123 @@
         iter.next();
         iter.next();
 
+        // 一个部署了 iterator 接口的类
+        class RangeIterator {
+            constructor(start,stop){
+                this.value = start;
+                this.stop = stop;
+            }
+
+            [Symbol.iterator]() {
+                return this;
+            }
+
+            next(){
+                let value = this.value;
+                if(value < this.stop){
+                    this.value++;
+                    return {done:false,value:value};
+                }
+
+                return {done:true,value:undefined};
+            }
+        }
+
+        function range(start, stop) {
+            return new RangeIterator(start,stop);
+        }
+
+        for(let value of range(0,3)){//遍历 类实现 有实现遍历接口
+            console.log(value);
+        }
+
+        // 通过遍历器实现 指针结构
+        function Obj(value) {
+            this.value = value;
+            this.next = null;
+        }
+
+        Obj.prototype[Symbol.iterator] = function () {
+            let iterator = {next: next};
+            let current = this;
+
+            function next() {
+                if(current){
+                    let value = current.value;
+                    current = current.next;
+                    return {done: false,value: value};
+                }else{
+                    return {done: true};
+                }
+            }
+
+            return iterator;
+        };
+
+        let one = new Obj('a');
+        let two = new Obj('b');
+        let three = new Obj('c');
+
+        one.next = two;
+        two.next = three;
+
+        for(let i of one){
+            console.log(i);
+        }
+
+        // 对象添加 Iterator 接口例子
+        let obj = {
+            data:['hello','world'],
+            [Symbol.iterator](){
+                const self = this;
+                let index = 0;
+                return {
+                    next(){
+                        if(index < self.data.length){
+                            return {
+                                value: self.data[index++],
+                                done: false
+                            };
+                        }else {
+                            return {value: undefined,done: true};
+                        }
+                    }
+                };
+            }
+        };
+        //遍历输出
+        for(let i of obj){
+            console.log(i);
+        }
+
+        /* start 类似数组的对象（存在数值键名和 length 属性）部署Iterator 接口，简便方法 */
+        let iterable = {
+            0: 'e',
+            1: 'f',
+            2: 'g',
+            length: 3,
+            [Symbol.iterator]:Array.prototype[Symbol.iterator]
+        };
+
+        for (let item of iterable){
+            console.log(item);
+        }
+        // 注意普通对象部署数组的 Symbol.iterator 方法，并无效果
+        let iterable2 = {
+            a: 'e',
+            b: 'f',
+            c: 'g',
+            length: 3,
+            [Symbol.iterator]:Array.prototype[Symbol.iterator]
+        };
+
+        for (let item of iterable){
+            console.log(item); // undefined undefined undefined
+        }
+        /* end */
+        // 看到第三
+
+
     </script>
 </head>
 <body>
