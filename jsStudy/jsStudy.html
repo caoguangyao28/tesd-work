@@ -14,13 +14,12 @@
 
         Super.prototype.getFlag = function(){
             return this.flag;
-        }
+        };
 
         // Super.prototype.getRecords = function(){
         //     return records;
         //     // return this.records;
         // }
-
         function Sub(){
             this.subFlag = false;
             Super.call(this);//借用构造函数 继承（实际上复制生成） 这样 Sub 的实例 即使该 原型连上的属性 也不会对 其它实例造成影响
@@ -30,21 +29,16 @@
         }
         //实现继承
         Sub.prototype = new Super;
-
 //        Sub2.prototype = new Super;
 
         Sub.prototype.constructor = Sub;
-
         var obj = new Sub();
-
         console.log(obj.getFlag());
-
         obj.flag = false;  //修改之后，由于是原型上的属性，之后创建的所有实例都会受到影响
         obj.__proto__.flag = false; //改的是自己原型属性 父类原型属性未变
 
         var obj_2 = new Sub();//
         console.log(obj_2.flag); //true
-
         console.log("this 使用说明：");
 
         function fn1() {
