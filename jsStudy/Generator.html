@@ -3,7 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Generator 函数的语法</title>
+    <!--es6提供的一种异步编程解决方案-->
+    <script type="application/x-javascript">
+        function* helloWorldGenerator(){
+            yield 'hello';
+            yield 'world';
+            return 'ending';
+        }
+        var hw = helloWorldGenerator();
+        console.log(hw.next());// {value:'hello',done:false}
+        console.log(hw.next());// {value:'world',done:false}
+        console.log(hw.next());// {value:'ending',done:true}
+        console.log(hw.next());// {value:undefined,done:true}
 
+        // 无 yield 语句的Generator 函数 是一个单纯的暂缓执行函数
+        function* f() {
+            console.log('执行了');
+        }
+
+        var generator = f();// 这里函数不会执行
+
+        setTimeout(function () {
+            generator.next();//调用 next 时才会执行
+        },2000);
+
+        let myIterable = {};
+        myIterable[Symbol.iterator] = function* () {
+            yield 1;
+            yield 2;
+            yield 3;
+        };
+
+        let myIterableR = [...myIterable]; // [1,2,3]
+        console.log(myIterableR);
+
+        // 向 Generator 函数内 输入值
+        function* dataConsumer() {
+            console.log('started'); //
+            console.log(`1. ${yield }`);
+            console.log(`2. ${yield }`);
+           return 'result';
+        }
+        let getObj = dataConsumer();
+        //第一次 无法传值
+        getObj.next();
+
+        getObj.next('a');
+
+        getObj.next('b');
+
+
+        //存疑
+        function wrapper(generatorFunction) {
+            return function (...args) {
+                let generatorObject = generatorFunction(...args);
+                generatorObject.next();
+                return generatorObject;
+            }
+        }
+
+        const wrapped = wrapper(function* (){
+            console.log(`first input: ${yield }`);
+            return 'DONE'
+        });
+
+        wrapped().next('hello!');
+        // 3 for...of 循环
+
+
+
+    </script>
 </head>
 <body>
 
