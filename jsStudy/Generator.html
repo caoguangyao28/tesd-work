@@ -68,8 +68,73 @@
         });
 
         wrapped().next('hello!');
-        // 3 for...of 循环
+        // 3 for...of 循环 自动遍历 Generator 函数生成的 Iterator 对象
+        function* foo() {
+            yield 1;
+            yield 2;
+            yield 3;
+            yield 4;
+            yield 5;
+            return 6;
+        }
 
+        for(let v of foo()){
+            console.log(v);
+            // 1,2,3,4,5 不包含 return 的值
+        }
+
+        // 斐波那契数列的例子 0 1 1 2 ... 从第三个数开始 每个数字为前2个数字之和
+        function* fibonacci() {
+            let [prev,curr] = [0,1];
+            for(;;){
+                yield  curr;
+                [prev,curr] = [curr,prev + curr];
+            }
+        }
+
+        for(let n of fibonacci()){
+            if(n > 1000) break;
+            console.log(n);
+        }
+
+        //遍历任意对象的方法
+        function *objectEntries(obj) {
+            let propkeys = Reflect.ownKeys(obj);
+            for(let propkey of propkeys){
+                yield [propkey,obj[propkey]];
+            }
+        }
+
+        let jane = {first:'jane',last:'Doe'};
+
+        for(let [key,value] of objectEntries(jane)){
+            console.log(`${key}: ${value}`);
+        }
+        //遍历任意对象的方法 另一种方式
+        function *objectEntries2() {
+            let propkeys = Object.keys(this);
+            for(let propkey of propkeys){
+                yield [propkey,this[propkey]];
+            }
+        }
+        let jane2 = {first:'jane',last:'Doe'};
+
+        jane2[Symbol.iterator] = objectEntries2;
+
+        for(let [key,value] of jane2){
+            console.log(`${key}: ${value}`);
+        }
+        // 拓展运算符(...) 解构赋值  Array.from
+        function* numbers() {
+            yield 1;
+            yield 2;
+            return 3;
+            yield 4;
+        }
+
+        console.log([...numbers()]);
+
+        Array.from(numbers());
 
 
     </script>
