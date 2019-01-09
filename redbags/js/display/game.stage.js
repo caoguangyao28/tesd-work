@@ -20,7 +20,7 @@
                 //创建红包
                 $stage.bag();
                 //创建静态素材
-                $stage.static();
+                // $stage.static();
                 //创建按钮素材
                 // $stage.button();
                 //初始化流星

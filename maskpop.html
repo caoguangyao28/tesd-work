@@ -2,28 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>maskpop</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
     <style>
-        html,body{
+        html{
             width: 100%;
             height: 100%;
             padding: 0;
             margin: 0;
             border: 0;
-            overflow: hidden;
+            background: #42b983;
         }
+
+        body{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
         .container{
-            width: 98%;
-            height: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
+            width: 100%;
         }
         .mask{
             position: fixed;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(60, 60, 60, 0.64);
             top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(60, 60, 60, 0.64);
+            z-index: 10;
         }
     </style>
 </head>
@@ -37,4 +46,28 @@
     <div class="mask">
     </div>
 </body>
+<script>
+    function bodyScroll(event){
+        event.preventDefault();
+    }
+    function unScroll() {
+        var top = $(document).scrollTop();
+        $(document).on('scroll.unable',function (e) {
+            $(document).scrollTop(top);
+        });
+        document.addEventListener('touchmove',bodyScroll,false);
+        $('html').css('overflow','hidden');
+    }
+
+    function removeUnScroll() {
+        $(document).unbind("scroll.unable");
+        document.removeEventListener('touchmove',bodyScroll,false);
+        $('html').css('overflow','');
+    }
+    $(function(){
+        // document.addEventListener('touchmove',bodyScroll,false);
+        // $('html').css({'position':'fixed',"width":"100%"});
+        // unScroll();
+    });
+</script>
 </html>

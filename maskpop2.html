@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>maskpop</title>
+    <script src="jquery/jquery-1.10.2.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        html{
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%
+        }
+        body {
+            width: 100%;
+            margin: 0;
+            position: relative;
+        }
+        body.overflow{
+            overflow: hidden;
+        }
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1040;
+            background-color: #000;
+            opacity: .5;
+            display: none;
+        }
+        .modal-open {
+            overflow: hidden;
+        }
+        .pop{
+            width: 300px;
+            height: 400px;
+            margin:0 auto;
+            z-index: 1041;
+            display: none;
+            position: fixed;
+            top: 0;
+        }
+    </style>
+    <script>
+        function showModal() {
+            $('body').addClass('modal-open');
+            $('.modal-backdrop').show()
+            $('.pop').show()
+        }
+    </script>
+</head>
+<body class="">
+    <div class="" style="height: 2000px;">
+        <a href="javascipt:void(0)" onclick="showModal()">click</a>
+        <div class="modal-backdrop"></div>
+    </div>
+    <div class="pop">
+        我是弹窗
+    </div>
+</body>
+</html>
