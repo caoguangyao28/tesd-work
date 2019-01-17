@@ -19,8 +19,7 @@ var App=(function () {
         createjs.Ticker.timingMode = createjs.Ticker.RAF;
         createjs.Ticker.setFPS(parameter.FPS||30);
         var stage=new createjs.Stage(canvas);
-        // createjs.Touch.enable(stage, true);
-        createjs.Touch.enable(stage, false);
+        createjs.Touch.enable(stage, true);
         stage.canvas.width=parameter.width;
         stage.canvas.height=parameter.height;
         stage.main=this.creat("dom",{dom:document.getElementById(id)});

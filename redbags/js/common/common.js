@@ -44,6 +44,10 @@
                     }, enterFrame: function (event) {
                         //更新舞台
                         stage.update(event);
+                        //全部加载完成
+                        event.currentTarget.removeEventListener("fileload");
+                        event.currentTarget.removeEventListener("progress");
+                        event.currentTarget.removeEventListener("complete");
                     }
                 });
             },
