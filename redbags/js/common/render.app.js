@@ -19,8 +19,7 @@ var App=(function () {
         createjs.Ticker.timingMode = createjs.Ticker.RAF;
         createjs.Ticker.setFPS(parameter.FPS||30);
         var stage=new createjs.Stage(canvas);
-        // createjs.Touch.enable(stage, true);
-        createjs.Touch.enable(stage, false);
+        createjs.Touch.enable(stage, true);
         stage.canvas.width=parameter.width;
         stage.canvas.height=parameter.height;
         stage.main=this.creat("dom",{dom:document.getElementById(id)});
@@ -64,12 +63,14 @@ var App=(function () {
            stage.main.x=(width-maxHeight*sacle)/2;
            stage.main.y=(maxWidth*sacle-height)/2+height;
        }
+       console.log(stage.main.x + ',y:'+ stage.main.y);
        stage.main.scaleX = stage.main.scaleY =sacle;
        return {scale:sacle,width:maxWidth*sacle,height:maxHeight*sacle,x:stage.main.x,y:stage.main.y};
     };
     App.setViewport=function(stage,angle){
         var deg=angle==0?-90:0;
         if(!this.getViewport()){deg=angle==0?0:-90;}
+        console.log("设置舞台 window width > height 时 旋转"+deg);
         stage.main.rotation=deg;
         if(angle==0){return deg!=0?false:true;}else{return deg<0?false:true;}
     };

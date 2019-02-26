@@ -18,14 +18,14 @@
                 //创建优惠券
                 // $stage.ticket();
                 //创建红包
-                $stage.bag();
+                // $stage.bag();
                 //创建静态素材
-                $stage.static();
+                // $stage.static();
                 //创建按钮素材
                 // $stage.button();
                 //初始化流星
                 // new $.meteor({stage:option.stage,loader:option.loader}).init().start();
-                 //初始化红包
+                 //初始化红包雨动效
                 new $.redBag({stage:option.stage,loader:option.loader}).init().start();
                 //初始化背景元素
                 //option.stage.addChildAt(new $.text({loader:option.loader}).bg().movieclip,0);
@@ -33,12 +33,11 @@
                 option.stage.addChildAt(bg,0);
                 createjs.Tween.get(bg).to({alpha:1},1000,createjs.Ease.linear);
                 //开始进场
-                $stage.methods.play(true);
+                // $stage.methods.play(true);
             },
             play:function(isIn,pass){
                 isPass=pass||false;
                 if(status==0&&!isIn){
-                    debugger;
                     status=1;
                     //首页出场动画
                     $stage.tween.start(isIn,homeTicketArr);
@@ -203,9 +202,9 @@
           var tel=new $.sheet('<a></a>',{loader:option.loader,data:staticData});
           var gameText1=new $.sheet('<a></a>',{loader:option.loader,data:staticData});
           option.stage.addChildAt(logo.creat(),slogan.creat(),tel.creat(),gameText1.creat(),2);
-          logo.init().setDirection(staticData.point[0]).gotoAndStop("logo");  
-          slogan.init().setDirection(staticData.point[1]).gotoAndStop("slogan");  
-          tel.init().setDirection(staticData.point[5]).alpha(0).gotoAndStop("tel").tween();  
+          logo.init().setDirection(staticData.point[0]).gotoAndStop("logo");
+          slogan.init().setDirection(staticData.point[1]).gotoAndStop("slogan");
+          tel.init().setDirection(staticData.point[5]).alpha(0).gotoAndStop("tel").tween();
           gameText1.init().setDirection(staticData.point[6]).setClick(true).event().alpha(0).gotoAndStop("gameText1");
           gameOutArr.push({key:"tel",shape:tel.movieClip,data:{oY:staticData.point[2].oY,delayOut:0}},{key:"gameText1",shape:gameText1.movieClip,data:{oY:staticData.point[3].oY,delayOut:150}});
           gameInArr.push({key:"logo",shape:logo.movieClip,data:staticData.point[0]},{key:"tel",shape:tel.movieClip,data:staticData.point[2]},{key:"gameText1",shape:gameText1.movieClip,data:staticData.point[3]});
