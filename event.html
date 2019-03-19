@@ -7,11 +7,18 @@
     <script>
         $(function () {
             // $('ul li').click(function (e) {// 每个li 加事件
-            //     console.log(e);
+            //     alert(e);
             // });
             /*jquery中事件委托方式*/
             $('ul').on('click','li',function (event) {
-               console.log(event.target);
+               alert(event.target);
+            });
+            $('ul').on('click','li.other',function (event) {
+               alert(event.target);
+            });
+
+            $('ul').on('input','input',function (event) {
+               alert($(event.target).val());
             });
 
             // 原生js 事件委托
@@ -28,9 +35,10 @@
 <body>
     <ul id="contentUl">
         <li>one</li>
-        <li>tow</li>
+        <li class="other">tow</li>
         <li>three</li>
         <li>four</li>
+        <input type="text" value="点击" />
     </ul>
 </body>
 </html>

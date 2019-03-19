@@ -22,7 +22,7 @@
             a.type = "text/javascript";
             a.id = "zhuge-js";
             a.async = !0;
-            a.src = "https://u2.zhugeio.com/zhuge.js?v=" + verStr;
+            a.src = "https://u2.zhugeio.com/initZhuge.js?v=" + verStr;
             a.onerror = function () {
                 window.zhuge.identify = window.zhuge.track = function (ename, props, callback) {
                     if (callback && Object.prototype.toString.call(callback) === '[object Function]') {
@@ -34,8 +34,10 @@
             };
             var c = document.getElementsByTagName("script")[0];
             c.parentNode.insertBefore(a, c);
-            window.zhuge._init(b, x)
+            window.zhuge._init(b, x);
         }
     };
-    window.zhuge.load('此处填写您在诸葛申请的APP KEY');
+    window.zhuge.load('此处填写您在诸葛申请的appkey',{
+        autoTrack:true
+    });
 })();
