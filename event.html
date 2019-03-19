@@ -10,9 +10,9 @@
             //     alert(e);
             // });
             /*jquery中事件委托方式*/
-            $('ul').on('click','li',function (event) {
-               alert(event.target);
-            });
+            // $('ul').on('click','li',function (event) {
+            //    alert(event.target);
+            // });
             $('ul').on('click','li.other',function (event) {
                alert(event.target);
             });
@@ -22,13 +22,13 @@
             });
 
             // 原生js 事件委托
-            var ul = document.getElementById('contentUl');
-            ul.addEventListener('click',function (event) {
-                var target = event.target;
-                if(target.nodeName === 'LI'){//避免点击ul本身触发
-                    target.style.backgroundColor = "red";
-                }
-            })
+            // var ul = document.getElementById('contentUl');
+            // ul.addEventListener('click',function (event) {
+            //     var target = event.target;
+            //     if(target.nodeName === 'LI'){//避免点击ul本身触发
+            //         target.style.backgroundColor = "red";
+            //     }
+            // });
         });
     </script>
 </head>
