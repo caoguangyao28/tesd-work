@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>count dom</title>
+</head>
+<body><div class="col-xs-12 col-sm-6 article-banner" style="color:#3c8452"></div></body>
+<script>
+    <!--不是很准确 空格换行算节点了-->
+    function countNodes(node) {
+        //  计算自身
+        var count = 1;
+        //  判断是否存在子节点
+        if(node.hasChildNodes()) {
+            //  获取子节点
+            debugger;
+            var cnodes = node.childNodes;
+            //  对子节点进行递归统计
+            for(var i=0; i<cnodes.length; i++) {
+                count = count + countNodes(cnodes.item(i))
+            }
+        }
+        return count;
+    }
+    console.log(countNodes(document.body));
+
+</script>
+</html>
