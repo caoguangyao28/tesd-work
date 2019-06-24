@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module</title>
+    <script>
+         /*对象方法以及属性在全局上下文中隔离出来 不污染全局作用域
+          * 一般已 立即执行函数 返回字面对象包裹 的形式
+          *
+          *  */
+        var testModule = (function () {
+            var count = 0;
+            return {
+                incrementCounter:function () {
+                    return ++ count;
+                },
+                resetCounter:function () {
+                    console.log('counter vallue reset ');
+                    count = 0;
+                }
+            }
+        })();
+        testModule.incrementCounter();
+        testModule.resetCounter()
+    </script>
+</head>
+<body>
+
+</body>
+</html>

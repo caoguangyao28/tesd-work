@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+    <script type="application/javascript">
+        /*
+        * 单例模式 基于模块模式 在处理
+        * flag 控制是否执行 类的初始化
+        * */
+        var Mysingletion = (function () {
+            var instance;
+            function init() {
+                function privateMethod(){
+                    console.log('我是私有方法');
+                }
+                var privateVariale = "I am also private";
+                var privateNum = Math.random();
+                return {
+                    publicMehtod:function () {
+                        console.log('public method');
+
+                    },
+                    publicProperty:'pulibc property',
+                    getRandomNumber:function () {
+                        return privateNum;
+                    }
+                }
+            }
+
+            return{
+                getInstance:function () {
+                    if(!instance){
+                        instance = init();
+                    }
+                    return instance;
+                }
+            }
+        })();
+
+        var singleA = Mysingletion.getInstance();
+        var singleB = Mysingletion.getInstance();
+        singleA.publicMehtod();
+        console.log(singleA.getRandomNumber() === singleB.getRandomNumber());
+        console.log(singleA === singleB);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
