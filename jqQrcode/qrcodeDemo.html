@@ -7,17 +7,62 @@
     <script src="./jquery.qrcode.min.js"></script>
     <script>
         $(function () {
-            $('#qrcode').qrcode({
+            var canvas = $('#qrcode').qrcode({
                 render: "canvas",
                 text: "http://www.baidu.com",
                 width:100,
                 height:100
             });
-        })
+
+            $('<img id="original" style="display: none;" />').attr('src',$('#qrcode > canvas').get(0).toDataURL('image/jpg')).appendTo($('#qrcode'));
+
+
+        });
+        function setCanvas() {
+            var imgdom = $('#qrcode img');
+            var newImage = new Image();
+            $(newImage).load(function () {
+                // alert(newImage.sizes);
+                // var canvas = document.createElement('canvas');
+                // canvas.width = 500;
+                // canvas.height = 500;
+                // var ctx=canvas.getContext("2d");
+                // ctx.drawImage(imgdom,10,10);
+                //
+                // $('#result').append(canvas);
+            });
+            newImage.onload = function(){
+                var canvas = document.createElement('canvas');
+                canvas.width = 500;
+                canvas.height = 500;
+                var ctx=canvas.getContext("2d");
+                ctx.drawImage(newImage,10,10);
+
+                $('#result').append(canvas);
+            };
+            newImage.src = $('#qrcode img').attr('src');
+
+            imgdom.ready(function () {
+                // alert(1);
+            });
+            imgdom.load(function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = 500;
+                canvas.height = 500;
+                var ctx=canvas.getContext("2d");
+                ctx.drawImage(imgdom[0],10,10);
+                $('#result').append(canvas);
+            })
+
+        }
     </script>
 </head>
 <body>
     <div id="qrcode">
+
+    </div>
+    <button onclick="setCanvas()">clickme</button>
+    <div id="result">
 
     </div>
 </body>
