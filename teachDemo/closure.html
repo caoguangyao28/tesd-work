@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+    <script type="text/javascript">
+        function outer(){
+            var n = 100;
+
+            function add(){
+                n++;
+                console.log(n);
+            }
+
+            function reduce(){
+                n--;
+                console.log(n);
+            }
+
+            return[add,reduce];
+        }
+
+        var arr = outer();
+        arr[0]();
+        arr[0]();
+        arr[0]();
+        arr[0]();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

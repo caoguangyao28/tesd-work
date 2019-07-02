@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mytypeof</title>
+    <script>
+        function mytypeOf(val) {
+            //Object.prototype.toString  通过 call 方式调用改变上下文  返回 调用者的 详细类型
+            var type = typeof(val);
+            var toStr = Object.prototype.toString;
+            var resSet = {
+                "[object Object]":'object',
+                "[object Array]":'array',
+                "[object Number]":'obj_number',
+                "[object String]":'obj_string',
+                "[object Boolean]":'obj_boolean',
+                "[object RegExp]":'regexp',
+                "[object Date]":'date'
+            }
+            if(type == null){
+                return 'null';
+            }else if(type === 'object'){
+                var res = toStr.call(val);
+                return resSet[res];
+            }else {
+                return type;
+            }
+        }
+
+        // 区别 与 RegExp 区别
+        // var str1 = 'aaaaaa';
+        // var str2 = new String('bbb');
+        // var str3 = String(str1);
+        // var str4 = String(str2);
+        // console.log(str1,str2,str3,str4);
+        // str1 = 'bbbbb';
+        // str2[3] = 'a';
+        // console.log(str1,str2,str3,str4);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

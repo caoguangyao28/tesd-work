@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟字符串模板</title>
+    <script type="text/html" id="tpl">
+        <div class="wraper">
+            <h1>{{title}}</h1>
+            <h2>{{author}}</h2>
+            <p>{{content}}</p>
+        </div>
+    </script>
+
+</head>
+<body>
+    <div class="acricle"></div>
+    <script type="text/javascript">
+        var str = 'My name is {{name}}. I\'m {{age}} years old',
+            reg = /{{(.*?)}}/g;
+
+        var str1 = str.replace(reg,function (node,key) {
+            return {
+                name:'test',
+                age:20
+            }[key];
+        });
+
+        console.log(str1);
+
+        var tpl  = document.getElementById('tpl').innerHTML;
+        oActical = document.getElementsByClassName('acricle')[0];
+
+        oActical.innerHTML = tpl.replace(reg,function(node,key){
+            return{
+                title:'haha',
+                author:'cgy',
+                content:'你好 javascript'
+            }[key];
+        });
+    </script>
+</body>
+</html>
