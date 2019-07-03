@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组使用</title>
+    <script>
+        // 可以起到删除 添加 替换 的效果
+        var arr = [1,2,3,4];
+        // arr.splice(3,0,6,7,8);
+        arr.splice(2,2);//[1,2]
+        console.log(arr);
+        arr.splice(2,0,3,4);// 变回原来 [1,2,3,4]
+        console.log(arr);
+        arr.splice(-1,0,6,7,8);// [1,2,3,6,7,8,4]
+        console.log(arr);
+        arr.splice(3,3);// [1,2,3,4]
+        console.log(arr);
+
+        //数组排序 sort 默认按照 ascll 排序的
+        var arr2 = [29,47,5,7];
+        console.log(arr2.sort());
+
+        arr2.sort(function(a,b){//冒泡排序
+            return a-b;
+        });
+
+        var objarr = [{name:'1',age:10},{name:'2',age:8},{name:'3',age:20}];
+        objarr.sort(function(a,b){
+            return a.age - b.age;
+        });
+        //数据随机排序 random() (0,1);
+        var arr3 = [1,2,3,4,5,6];
+        // arr3.sort(function(a,b){
+        //    var tem = Math.random();
+        //    return tem-0.5;
+        // });
+        // console.log(arr3);
+
+        //按字节排序数组
+        var arrSortBype = ['你好','hello','ok','程序员'];
+        //获取字符串的字节数
+        function getBytes(str){
+            var bytes = str.length;
+            for(var i=0;i<str.length;i++){
+                if(str.charCodeAt(i) > 255){//中文时 占2个字节
+                    bytes++
+                }
+            }
+            return bytes;
+        }
+
+        arrSortBype.sort(function(a,b){
+           return getBytes(a)-getBytes(b);
+        });
+
+        console.log(arrSortBype);
+
+        // slice(startIndex,endIndex)  数据裁剪 （splice 有些类似） [startIndex,endIndex)
+
+        var arr4 = arr3.slice();//[1,2,3,4,5,6];
+        var arr4 = arr3.slice(-2);
+        console.log(arr3,arr4);
+
+        // 类数组
+        function testArray() {
+            // arguments 是否是数组  类似的还有
+            // document.getElementsByTagName();
+            console.log(arguments);
+        }
+
+        testArray(1,2,3,4);
+
+    // 模拟 类数组
+        var obj ={
+            '0':1,
+            '1':2,
+            '2':3,
+            '3':4,
+            '4':5,
+            '5':6,
+            'length':6,
+            'push':Array.prototype.push,
+            'splice':Array.prototype.splice
+        };
+        obj.push(7);
+
+        console.log(obj);
+
+        var ojb2 = {
+            '2':2,
+            '3':3,
+            'length':2,
+            'push':Array.prototype.push,
+            'splice':Array.prototype.splice
+        };
+
+        ojb2.push(1);// ojb2[2] = 1; length = 3
+        ojb2.push(2);// ojb2[3] = 2; length = 4
+        console.log(ojb2);
+
+        // 简单数组去重
+        var arrSimple = [0,0,1,1,1,1,3,2,5,4,6,7,2,1,3,3,5];
+
+        Array.prototype.unique = function () {
+            var temp = {},resArr=[];
+            for (var i=0;i< this.length;i++){
+                if(!temp.hasOwnProperty(this[i])){
+                    temp[this[i]] = this[i];
+                    resArr.push(this[i]);
+                }
+
+            }
+            return resArr;
+        };
+
+        // Array.prototype.unique2 = function () {
+        //     var temp = {},resArr=[];
+        //     for (var i=0;i< this.length;i++){
+        //         if(!temp[this[i]]){
+        //             temp[this[i]] = this[i];//'value'
+        //             resArr.push(this[i]);
+        //         }
+        //
+        //     }
+        //     return resArr;
+        // };
+
+        console.log(arrSimple.unique());
+
+        //字符串去重
+        String.prototype.unique = function () {
+            var temp = {},resStr='';
+            for (var i=0;i < this.length;i++){
+                if(!temp.hasOwnProperty(this[i])){
+                    temp[this[i]] = this[i];
+                    resStr+=this[i];
+                }
+            }
+            return resStr;
+        };
+
+        var strt = '000012323456gffffrrrrrr';
+
+        console.log(strt.unique());
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
