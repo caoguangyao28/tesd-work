@@ -3,6 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>objectDemo</title>
+    <script type="text/javascript">
+        /**
+         * 对象字面量  对象直接量
+         * 构造对象
+         *
+         */
+        var obj = {
+            name:'',
+            age:''
+        };
+        /**
+         * Object 构造函数
+         *
+         */
+        var obj2 = new Object();
+        obj2.name = '';
+        obj2.age = 2;
+
+        //直接调用 Object 时  Object(obj) 直接就是返回 原obj！！
+
+        //new 关键字 构造时  new Object(obj);  还是返回的  原obj！！！ 与 正则
+
+        /**
+         * 自定义构造函数
+         *
+         *
+         */
+        function Teacher(option){
+            this.name = '张三';
+            this.sex = '男';
+            this.smoke = function(){
+                console.log('I am smoking');
+            }
+        }
+
+        var teacher = new Teacher({name:'one',age:4});
+        console.log(teacher);
+
+        /**
+         * 构造函数原理
+         *
+         * 1，定义时 this 存在吗
+         *   不实例化执行时 函数执行 指向 window
+         * 2，new 关键字 指向 实例对象
+         *    AO = {
+         *      this{
+         *      }
+         *    }
+         *
+         */
+        function Car() {
+            this.color = 'red';
+            // return 引用值时 阻止 默认return this
+            // return {};
+            return 'aba';
+        }
+        var car = new Car();// this == window  构造执行  申明 this={}  最后 return this
+        console.log(car);
+        //包装类  原始值 -> 包装类 -> delete 自加的属性
+
+
+    </script>
 </head>
 <body>
 objectDemo

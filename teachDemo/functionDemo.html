@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function demo</title>
+    <script>
+        var p = {
+            name : 'test',
+            age: 100
+        };
+        function Person(name, age) {
+            console.log(this);
+            console.log(this.name);
+            console.log(this.age);
+        }
+
+        Person.prototype.num = 1;
+
+        // bind  普通函数执行时 改变运行上下文 this  ，构造函数执行时 无效
+        Function.prototype.bindy = function(context){
+            var _self = this,
+                args = Array.prototype.slice.call(arguments,1),
+                tempFn = function(){};
+                console.log(_self);
+            var fn = function(){
+                var newArgs = Array.prototype.slice.call(arguments);
+                _self.apply(this instanceof _self ? this :context ,args.concat(newArgs));
+            }
+            tempFn.prototype = this.prototype;
+            fn.prototype = new tempFn();
+
+            fn.prototype.num = 2;
+            console.log(this.prototype);
+            return fn;
+        };
+
+        // var p1 = new Person('p1',23);
+        // console.log(p1);
+        var p2 = Person.bindy(p,'张三');
+        p2('男');
+
+        console.log(new p2('男'));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
