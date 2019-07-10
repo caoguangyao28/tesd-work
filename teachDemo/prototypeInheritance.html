@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Inheritance</title>
+    <script>
+        var inherit = (function(){
+            var Buffer = function(){};
+            //Buffer 的作用 我能否用 Object.create(Origin.prototype);
+            return function(Target,Origin){
+                Buffer.prototype = Origin.prototype;
+                Target.prototype = new Buffer();
+                Target.prototype.constructor = Target;
+                Target.prototype.super_class = Origin;
+            }
+        })();
+        function Teacher(){};
+        function Student(){};
+        // function Buffer(){};
+        inherit(Student,Teacher);
+        Teacher.prototype.name = 'Mr. zhang';
+        Student.prototype.age = 18;
+        var s = new Student();
+        var t = new Teacher();
+        console.log(s,t);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

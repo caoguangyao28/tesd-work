@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype chain</title>
+    <script>
+        // 原型链
+        Profesor.prototype.tskill = 'java';
+        function Profesor(){};
+        //----------分割线---------------------
+        function Teacher(){
+            this.name = "Mr Wang";
+            this.mskill = 'js';
+            this.student = 500;//原始值
+            this.stulsit = {
+                'one':'zhangsan'
+            } //引用型
+        }
+        Teacher.prototype = new Profesor();
+        var teacher = new Teacher();
+        //--------------------分割线-----------------
+        function Student(){
+            this.pskill = 'html/css';
+        }
+        Student.prototype = teacher;// 一个 teacher 实例赋值给了 Student.prototype
+        student = new Student();
+        student.student = 10; // 原始值 操作 与 操作对象 有所区别
+        console.log(student,teacher);
+        student.stulsit.two = 'two';
+        console.log(student,teacher);
+        // console.log(new Student()); // 展示
+        // 原型链的顶端是 Object.prototype
+
+        // 补充讲解 Object.create();
+        //var obj = Object.create(null) 不存在原型  并不是所有的对象都继承与 Object
+
+
+        //思考 student 是否有必要 完全基础 teacher  profesor  ？？
+        // 继承多余的属性  正常版的集成 利用 call apply
+        function Teacher2(name,mskill){
+            this.name = name;
+            this.mskill = mskill;
+        }
+
+        function Student2(name,skill,age,major){
+            Teacher2.apply(this,[name,skill]);//只是借用方法 生成属性(相当于拷贝属性 但无法继承原型)
+            this.age = age;
+            this.major = major;
+        }
+
+        console.log(new Student2('test','read',20,'6'));
+
+        function Teacher3(name,mskill){
+            this.name = 'Mrs li';
+            this.mskill = mskill;
+        }
+        Teacher3.prototype.say = function(){
+            console.log(this.name);
+        };
+
+        function Student3(){
+            this.name = 'student';
+        }
+
+        Student3.prototype = Teacher3.prototype;// 成了公共原型了
+
+        //-----------------------分割-----------------------------------------------
+
+        // 企业及的方法
+        function Teacher4() {
+            this.name = 'Mr li';
+            this.tskill = 'java';
+        }
+
+        Teacher4.prototype = {
+            pSkill:'js/jq'
+        };
+
+        var t = new Teacher4();
+
+        console.log(t);
+
+        function Student4(){
+            this.name = 'Mrs wang';
+        }
+
+        // function Buffer(){};
+        // Buffer.prototype = Teacher4.prototype;
+        var buffer =  Object.create(Teacher4.prototype);// new Buffer();
+        // var buffer =  new Buffer();// ;
+        Student4.prototype = buffer;
+        Student4.prototype.constructor = Student4;
+        Student4.prototype.age = 18;// 只会新增到 buffer 上 达到隔绝 效果 因为buffer 是 {}！！
+        var s = new Student4();
+        console.log(s);
+        // 但是！！！ 如果修改原型
+        Student4.prototype.pSkill = 'JS/JQ';
+        console.log(s,t);
+
+        // 圣杯模式
+        // 闭包 =》 私有变量
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+prototype chain
+</body>
+</html>
