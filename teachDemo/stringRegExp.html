@@ -7,18 +7,25 @@
 
         /**
          * 字符串常用方法 回顾
+         * 字符串 构建方式  字面量 String 构造函数 是否有区别
          *
          */
 
-        var str = "12345";
-        str.match();//结合正则
-        str.charAt();
-        str.charCodeAt();
-        str.indexOf();//结合正则
-        str.substr();
-        str.substring(6, 3);
-        str.replace();//结合正则
-        str.search();//可结合正则
+        // var str1 = 'aaaaaa';// 字符串
+        // var str2 = new String('bbb');//对象
+        // var str3 = String(str1);// 字符串
+        // var str4 = String(str2);// 字符串
+        // console.log(str1,str2,str3,str4);
+
+        // var str = "12345";
+        // str.match();//结合正则
+        // str.charAt();
+        // str.charCodeAt();
+        // str.indexOf();//结合正则
+        // str.substr();
+        // str.substring(6, 3);
+        // str.replace();//结合正则
+        // str.search();//可结合正则
 
         /**
          * 转义 字符
@@ -69,6 +76,17 @@
          * 元字符
          * \w === [0-9A-Za-z_] 字符  \W 非字符
          * \b 单词边界 \B
+         * \d \D
+         * \s \S
+         * \0
+         * \n
+         * \r
+         * \f
+         * \t
+         * \v
+         * \xxx
+         * \xdd
+         * \uxxxx
          */
 
         /**
@@ -109,12 +127,12 @@
         // console.log(str.replace(/o/g,'-'));
 
         // // xxyy - yyxx
-        // var str = 'aabbccddeeff',reg = /(\w)\1(\w)\2/g;
-        // var restr = str.replace(reg,function($,$1,$2){
-        //     console.log($,$1,$2);
-        //     return $2+$2+$1+$1;
-        // });
-        // console.log(restr);
+        var str = 'aabbccddeeff',reg = /(\w)\1(\w)\2/g;
+        var restr = str.replace(reg,function($,$1,$2){
+            console.log($,$1,$2);
+            return $2+$2+$1+$1;
+        });
+        console.log(restr);
 
         // js-plug-plug => jsPlugPlug
         var str = 'js-plug-plug',reg =/-(\w)/g;
