@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间线</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    // document.write('<h1>abc</h1>');// 为什么是追加
+    // //时间线的问题
+    window.onload = function(){//为什么是重写
+        console.log('onload');
+    };
+
+    /*
+    * 浏览器 开始加载页面时 开始 - 结束完毕 按顺序 发生的每一件事情 的总流程
+    * 1 生成 document【此时js 开始起作用】
+    * 2 解析文档 从 html 第一行 阅读到 最后一行（老的浏览器 只是读一遍） 中间 构建 dom 树 同时     document.readyState == 'loading'
+    *   如果有 link 标签 开新线程【js开启的】
+    *   异步加载外部css 文件 （包括style） 后 构建 cssdom 树
+    * 3 没有设置异步加载的 script 标签时 阻塞 文档解析，等待js脚本加载 并执行后 继续解析文档
+    * 4 遇到 异步加载的script ，异步加载 js 脚本，不阻塞文档解析【异步脚本里不可以 直接写 document.write()】
+    * 5 解析文档时 遇到 img 时 先解析 img 节点，src 创建加载线程 异步加载图片资源 不阻塞 解析文档
+    *
+    * 7 文档解析完成 如有 defer script js 脚本开始按照顺序执行 document.readyState == 'interactive' 交互
+    * 8 解析完成 执行 DOMContentLoaded 事件
+    * 9  程序：同步的脚本执行阶段 --> 事件驱动阶段
+    * 10 async script 加载并执行完毕 （执行顺序不定~~）,img 等资源加载完毕之后  window 对象的 onload 事件才会触发
+    *
+    * document.readyState == 'complete' 加载完成
+    *
+    * */
+    console.log(document.getElementsByTagName('html'));
+    console.log(document.readyState);
+    document.onreadystatechange = function (readState) {
+        console.log(document.readyState);
+    };
+    document.addEventListener('DOMContentLoaded',function(){
+        console.log('DOMContentLoaded');
+    },false);
+
+</script>
+</body>
+</html>
