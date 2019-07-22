@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>认识浏览！！</title>
+    <script>
+        /*
+        * domtree + csstree
+        * 渲染树构建完毕后 浏览器会根据渲染树 绘制页面
+        *
+        * 1，渲染树每个节点都有自己的样式
+        * 2,不包含 display：none ，header 等不需要渲染的元素
+        * 3，渲染树上每个节点 都被当作一个盒子 box
+        *    只有填充内容 边框 边距 位置 大小 其它样式
+        *
+        * 4， 当js 操作页面节点时就会产生 回流或重绘
+        *    回流 reflow 一定会引起重绘
+        *    重绘 repaint 不一定是 回流引起
+        * 回流  节点的尺寸 布局 display 变化 这些改变的时候 渲染树总的一部分 或者 全部需要重新构建
+        *
+        * 回流完成后 浏览器根据渲染树中 回流影响的部分 重新绘制  -》 重绘
+        *
+        * 引起回流的因素：
+        * 1， dom 节点的增加 删除
+        * 2, dom 节点位置变化
+        * 3. 元素 尺寸 边距 填充 边框 宽高
+        * 4. dom 节点 display 显示与否
+        * 5， 页面渲染初始化
+        * 6， 浏览器 尺寸变化
+        * 7， 向浏览器请求某些样式
+        *     offset  scroll  client  width  height getComputedStyle（） currentStyle
+        *
+        * 元素动画 一定 绝对定位 禁用 margin···
+        * */
+
+
+    </script>
+</head>
+<body>
+<!-- 渲染树构建完毕后 -->
+<!-- 浏览器的 回流 与 重绘 -->
+</body>
+</html>

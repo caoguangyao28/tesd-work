@@ -19,7 +19,6 @@
     window.onload = function(){//为什么是重写
         console.log('onload');
     };
-
     /*
     * 浏览器 开始加载页面时 开始 - 结束完毕 按顺序 发生的每一件事情 的总流程
     * 1 生成 document【此时js 开始起作用】
@@ -46,6 +45,42 @@
     document.addEventListener('DOMContentLoaded',function(){
         console.log('DOMContentLoaded');
     },false);
+</script>
+<script>
+    // 异步加载js 实例
+    (function(){
+        function async_load(){
+            var s = document.createElement('script'),
+                oscript = document.getElementsByTagName('script')[0];
+            s.type = 'text/javascript';
+            s.src = 'util.js';
+            oscript.parentNode.insertBefore(s,oscript);
+
+            if(s.readyState){ // 有些浏览器是支持的
+                s.onreadystatechange = function () {
+                    var state = s.readyState;
+                    if(state === 'complete' || state === 'loaded'){
+                        // 执行 js
+                        // util[fn]();
+                    }
+                }
+            }
+        }
+
+        if(s.readyState){
+            s.onreadystatechange = function () {
+                var state = s.readyState;
+                if(state === 'complete' || state === 'loaded'){
+                    // 执行 js
+                    // util[fn]();
+                }
+            }
+        }else if(window.attachEvent){
+            window.attachEvent('onload', async_load);
+        }else{
+            window.addEventListener('onload',async_load,false);
+        }
+    })();
 
 </script>
 </body>
