@@ -129,6 +129,7 @@
         // // xxyy - yyxx
         var str = 'aabbccddeeff',reg = /(\w)\1(\w)\2/g;
         var restr = str.replace(reg,function($,$1,$2){
+            console.log('$,$1,$2的意义');
             console.log($,$1,$2);
             return $2+$2+$1+$1;
         });

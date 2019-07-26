@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mvvm-demo</title>
+</head>
+<body>
+<script>
+    //Observer
+    class Observer {
+        constructor(obj) {
+            this.data = obj;
+            if (!this.data || typeof this.data !== 'object') return;
+            Object.keys(this.data).forEach(key => {
+                console.log(key);
+                this._listen(key, this.data[key]);//使用箭头函数绑定this
+            })
+        }
+
+        _listen(key, val) {
+            new Observer(val);
+            Object.defineProperty(this.data, key, {
+                enumerable: true,
+                configurable: false,
+                /*   set:function (newval) {
+                       console.log("the key "+key+" set new value:",newval);
+                       val = newval;
+                   },
+                   get:function () {
+                       return val;
+                   }*///以上设置特权函数的方法也是可以的，下面采用es6的写法
+                set(newval) {
+                    val = newval;
+                },
+                get() {
+                    return val;
+                }
+            });
+        }
+    }
+
+</script>
+</body>
+</html>
