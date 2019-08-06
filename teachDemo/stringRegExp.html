@@ -6,6 +6,7 @@
     <script type="text/javascript">
 
         /**
+         * 简单无聊~ 困难
          * 字符串常用方法 回顾
          * 字符串 构建方式  字面量 String 构造函数 是否有区别
          *
@@ -15,6 +16,8 @@
         // var str2 = new String('bbb');//对象
         // var str3 = String(str1);// 字符串
         // var str4 = String(str2);// 字符串
+        // console.log(str1,str2,str3,str4);
+        // str2 = 'ccc';
         // console.log(str1,str2,str3,str4);
 
         // var str = "12345";
@@ -28,8 +31,10 @@
         // str.search();//可结合正则
 
         /**
-         * 转义 字符
-         * 編輯系統使用 \n \r \t   换行 windows \r\n  mac \r  linux \n
+         * 转义字符
+         * 編輯系統  使用 \n \r \t  换行
+         * 换行 windows \r\n  mac \r  linux \n
+         * \t 制表符 tab
          *
          * regular expression  RegExp
          *
@@ -74,9 +79,9 @@
 
         /**
          * 元字符
-         * \w === [0-9A-Za-z_] 字符  \W 非字符
+         * \w === [0-9A-Za-z_] 字符  \W 非单词字符
          * \b 单词边界 \B
-         * \d \D
+         * \d  [0-9] \D [^\d]
          * \s \S
          * \0
          * \n
@@ -94,68 +99,83 @@
          * 贪婪匹配原则 能匹配上多个 不匹配少
          */
 
-        // var regN = /\w?/g,str = 'abcdefg';
-        // var regN = /\w+/g,str = 'abcdefg';
-        // console.log(str.match(regN))
-        //是否已abc开头 和 以 abc 结尾
-        // var reg = /^abc.*abc$/g, str = 'abcjidjiabc';
-        // var reg = /^abc$/g,str = 'abc';
-        // console.log(reg.test(str));
-        // console.log(str.match(reg));
+            // var regN = /\w?/g,str = 'abcdefg';
+            // var regN = /\w+/g,str = 'abcdefg';
+            // console.log(str.match(regN))
+            //是否已abc开头 和 以 abc 结尾
+            // var reg = /^abc.*abc$/g, str = 'abcjidjiabc';
+            // var reg = /^abc$/g,str = 'abc';
+            // console.log(reg.test(str));
+            // console.log(str.match(reg));
 
-        // 正向预查 /regexp(?=n)/
-        // var reg = /a(?=b)/g,str = 'acddbabddjiab';
-        // console.log(str.match(reg));
+            // 正向预查 /regexp(?=n)/
+            // var reg = /a(?=b)/g,str = 'acddbabddjiab';
+            // console.log(str.match(reg));
 
-        //子表达试，反向引用 字表达式有记忆特性
-        // xxxx xxyy
-        // var reg = /(a)\1\1\1/g,str ='aaaabbbbcccddddd';
-        // var reg = /(\w)\1\1\1/g,str ='aaaabbbbcccddddd';
-        // var reg = /(\w)\1(\w)\2/g,str ='aabbbbcccdddee';
-        // console.log(str.match(reg));
+            //子表达试，反向引用 字表达式有记忆特性
+            // xxxx xxyy
+            // var reg = /(a)\1\1\1/g,str ='aaaabbbbcccddddd';
+            // var reg = /(\w)\1\1\1/g,str ='aaaabbbbcccddddd';
+            // var reg = /(\w)\1(\w)\2/g,str ='aabbbbcccdddee';
+            // console.log(str.match(reg));
 
-        // var strT = 'abcd{{efg}}abcd{{xyz}}',reg = /{{.*}}/g;
-        // console.log(strT.match(reg));
-        //
-        // reg = /{{.*?}}/g;
-        // console.log(strT.match(reg));
+            // var strT = 'abcd{{efg}}abcd{{xyz}}',reg = /{{.*}}/g;
+            // console.log(strT.match(reg));
+            //
+            // reg = /{{.*?}}/g;
+            // console.log(strT.match(reg));
 
-        //字符串 replace 方法
-        // var str = 'hello world';
-        // console.log(str.replace('o','-')); // replace 不具备全局匹配能力
-        // //结合 regexp
-        // console.log(str.replace(/o/g,'-'));
+            //字符串 replace 方法
+            // var str = 'hello world';
+            // console.log(str.replace('o','-')); // replace 不具备全局匹配能力
+            // //结合 regexp
+            // console.log(str.replace(/o/g,'-'));
 
-        // // xxyy - yyxx
-        var str = 'aabbccddeeff',reg = /(\w)\1(\w)\2/g;
-        var restr = str.replace(reg,function($,$1,$2){
+            // // xxyy - yyxx
+        var str = 'aabbccddeeff', reg = /(\w)\1(\w)\2/g;
+        var restr = str.replace(reg, function ($, $1, $2) {
             console.log('$,$1,$2的意义');
-            console.log($,$1,$2);
-            return $2+$2+$1+$1;
+            console.log($, $1, $2);
+            return $2 + $2 + $1 + $1;
         });
         console.log(restr);
 
         // js-plug-plug => jsPlugPlug
-        var str = 'js-plug-plug',reg =/-(\w)/g;
-        var str1 = str.replace(reg,function($,$1){
+        var str = 'js-plug-plug', reg = /-(\w)/g;
+        console.log(str.replace(reg,'$&'));
+
+        var str1 = str.replace(reg, function ($, $1) {
             return $1.toUpperCase();
         });
         console.log(str1);
 
         //重叠去重 http://www.w3school.com.cn/jsref/jsref_replace.asp
-        var str = 'aaaaaabbbbbbbcccccccc',reg = /(\w)\1*/g;
-        console.log(str.replace(reg,'$1'));
+        var str = 'aaaaaabbbbbbbcccccccc', reg = /(\w)\1*/g;
+        console.log(str.replace(reg, '$1'));
 
         // 给 10000000000000 加分割符 \B 非单词边界
         var numstr = '1000000000000000000';
         var reg2 = /(\d{3})/g;
-        console.log(numstr.replace(reg2,'$1,'));
+        console.log(numstr.replace(reg2, '$1,'));
 
         var reg = /(?=(\B)(\d{3})+$)/g;
         console.log(numstr.match(reg));
-        console.log(numstr.replace(reg,','));
+        console.log(numstr.replace(reg, ','));
 
 
+
+        // 正向预查 /regexp(?=n) 补获型分组/
+        // var regTest = /a(?=b)(\w)/g,
+        //     str = 'acddbabddjiab';
+        // console.log(str.match(regTest));
+        // console.log(regTest.exec(str));
+        // console.log(regTest.exec(str));
+
+        // 简单的html 文档分解为 标签和文本
+        var text = '<html><body bgcolor=linen><p>This is <b>bold<\/b>!</p><\/body><\/html>';
+        var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+
+        console.log(tags.exec(text));
 
 
     </script>
