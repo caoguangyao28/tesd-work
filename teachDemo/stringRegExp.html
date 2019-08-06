@@ -178,7 +178,6 @@
         console.log(tags.exec(text));
         // 匹配 url
         var result = ["url","scheme","slash","host","port","path",'query','hash'];
-        var parseUrl = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
         var parseUrl = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
         var testurl = "http://www.baidu.com:80/search/name?one=11&two=2#fragment";
         var testurl2 = "www.baidu.com:80/search/name?one=11&two=2#fragment";
