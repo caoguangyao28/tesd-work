@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>mediator simple</title>
+    <title>中介者模式 simple</title>
 
 </head>
 <body>
@@ -95,6 +95,69 @@
     // via the mediator
     mediator.subscribe( "newMessage", displayChat );//页面输出
     mediator.subscribe( "newMessage", logChat );//控制台输出
+
+    //
+    //
+    (function (root) {
+        function guidGenerator(){}
+        // Our Subscriber constructor
+        function Subscriber( fn, options, context ){
+
+            if ( !(this instanceof Subscriber) ) {
+
+                return new Subscriber( fn, context, options );
+
+            }else{
+
+                // guidGenerator() is a function that generates
+                // GUIDs for instances of our Mediators Subscribers so
+                // we can easily reference them later on. We're going
+                // to skip its implementation for brevity
+
+                this.id = guidGenerator();
+                this.fn = fn;
+                this.options = options;
+                this.context = context;
+                this.topic = null;
+
+            }
+        }
+    })();
+
+    // Let's model the Topic.
+    // JavaScript lets us use a Function object as a
+    // conjunction of a prototype for use with the new
+    // object and a constructor function to be invoked.
+    function Topic( namespace ){
+
+        if ( !(this instanceof Topic) ) {
+            return new Topic( namespace );
+        }else{
+
+            this.namespace = namespace || "";
+            this._callbacks = [];
+            this._topics = [];
+            this.stopped = false;
+
+        }
+    }
+
+    // Define the prototype for our topic, including ways to
+    // add new subscribers or retrieve existing ones.
+    Topic.prototype = {
+
+        // Add a new subscriber
+        AddSubscriber: function( fn, options, context ){
+
+            var callback = new Subscriber( fn, options, context );
+
+            this._callbacks.push( callback );
+
+            callback.topic = this;
+
+            return callback;
+        }
+    }
 
 
 </script>
