@@ -177,13 +177,31 @@
 
         console.log(tags.exec(text));
         // 匹配 url
-        var result = ["url","scheme","slash","host","port","path",'query','hash'];
-        var parseUrl = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-        var testurl = "http://www.baidu.com:80/search/name?one=11&two=2#fragment";
-        var testurl2 = "www.baidu.com:80/search/name?one=11&two=2#fragment";
-        var testurl3 = "ftp://www.baidu.com:80/search/name#fragment";
-        var parseres = parseUrl.exec(testurl3);
-        console.log(parseres);
+        // var result = ["url","scheme","slash","host","port","path",'query','hash'];
+        // var parseUrl = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
+        // var testurl = "http://www.baidu.com:80/search/name?one=11&two=2#fragment";
+        // var testurl2 = "www.baidu.com:80/search/name?one=11&two=2#fragment";
+        // var testurl3 = "ftp://www.baidu.com:80/search/name#fragment";
+        // var parseres = parseUrl.exec(testurl3);
+        // console.log(parseres);
+
+        //作业查看 王志宽 90
+        var parseUrl = /^(?:([A-Za-z]+):)?(\/{0,})([0-9.\-A-Za-z]+)(?::(\d+))?(\/[^\?#]+)?(?:\?([^#]+))?(?:#(\w*))?/;
+        var url = "http://www.baidu.com:80/search/name?one=11&two=2";
+        var result = parseUrl.exec(url);
+        console.log(result);
+
+        //侯庄博
+        function strLength(str){
+            let resultStr = str.match(/[\s\S]/gu);
+            return resultStr ? resultStr : 0;
+        }
+
+        var hparseUrl = /^([a-z]{4}):\/\/([a-z\.]+):([\d]+)([\/a-z]+)([\?a-z0-9\=\#\&]+)/;
+        result = hparseUrl.exec(url);
+        console.log(result);
+
+        // 李楠楠
 
     </script>
 </head>
