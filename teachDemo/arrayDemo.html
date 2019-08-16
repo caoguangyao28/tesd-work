@@ -4,32 +4,64 @@
     <meta charset="UTF-8">
     <title>数组使用</title>
     <script>
-        // 可以起到删除 添加 替换 的效果
+        /*
+        * pop 删除尾部元素 并返回被删除元素
+        * shift 删除头部元素 并返回被删除元素
+        *
+        * push 尾部 追加一个或多个元素
+        * unshift 头部追加一个或多个元素
+        *
+        * reverse 反序
+        * sort *** 排序
+        * */
+        // sort(fn) 无fn时 排序 默认按照 是按照字符编码的顺序进行排序
+
+
+        // 传入 fn 时 ,fn 接收 (a,b) 2个参数 返回值（res） 决定顺序 res > 0 b 排 a 前
+        // res < 0  a 排 b 前  res = 0  ，顺序不变 ---其实这就是 冒泡排序 示列
+
+        // splice(index,length,...items) **** splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目
+
+
+
+        //splice(index,length,item1,items) 可以起到删除 添加 替换 的效果 index 删除/替换 起始位  length 删除的长度，
+        // item,items... 追加的元素
+        // 返回被删除部分
+        //
         var arr = [1,2,3,4];
-        // arr.splice(3,0,6,7,8);
-        arr.splice(2,2);//[1,2]
-        console.log(arr);
-        arr.splice(2,0,3,4);// 变回原来 [1,2,3,4]
-        console.log(arr);
-        arr.splice(-1,0,6,7,8);// [1,2,3,6,7,8,4]
-        console.log(arr);
-        arr.splice(3,3);// [1,2,3,4]
-        console.log(arr);
+        // arr.splice(5,0,6,7,8);
+        // console.log(arr);// 1234678
+        var spliceRes =  arr.splice(4,0,5);//[1,2]
+        console.log('splice 返回值'+spliceRes);
+        // arr.splice(2,0,3,4);// 变回原来 [1,2,3,4]
+        // console.log(arr);
+        // arr.splice(-1,0,6,7,8);// [1,2,3,6,7,8,4]
+        // console.log(arr);
+        // arr.splice(3,3);// [1,2,3,4]
+        // console.log(arr);
 
-        //数组排序 sort 默认按照 ascll 排序的
-        var arr2 = [29,47,5,7];
-        console.log(arr2.sort());
-
-        arr2.sort(function(a,b){//冒泡排序
-            return a-b;
-        });
-
-        var objarr = [{name:'1',age:10},{name:'2',age:8},{name:'3',age:20}];
-        objarr.sort(function(a,b){
-            return a.age - b.age;
-        });
+        //数组排序 sort 默认按照 ascll ？ Unicode 排序的
+        // sort(function(a,b){
+        //  return ret;
+        // })
+        // 匿名函数 返回值 决定 a 与 b 的顺序  ret > 0  则 b 排到 a 前面
+        // ret < 0  a 排 b 前面
+        // ret = 0 不变 不作变动
+        //
+        // var arr2 = [29,47,5,7];
+        // arr2.sort();
+        // console.log(arr2);
+        //
+        // arr2.sort(function(a,b){//冒泡排序
+        //     return a-b;
+        // });
+        // console.log(arr2);
+        // var objarr = [{name:'1',age:10},{name:'2',age:8},{name:'3',age:20}];
+        // objarr.sort(function(a,b){
+        //     return a.age - b.age;
+        // });
         //数据随机排序 random() (0,1);
-        var arr3 = [1,2,3,4,5,6];
+        // var arr3 = [1,2,3,4,5,6];
         // arr3.sort(function(a,b){
         //    var tem = Math.random();
         //    return tem-0.5;
@@ -39,36 +71,36 @@
         //按字节排序数组
         var arrSortBype = ['你好','hello','ok','程序员'];
         //获取字符串的字节数
-        function getBytes(str){
-            var bytes = str.length;
-            for(var i=0;i<str.length;i++){
-                if(str.charCodeAt(i) > 255){//中文时 占2个字节
-                    bytes++
-                }
-            }
-            return bytes;
-        }
+        // function getBytes(str){
+        //     var bytes = str.length;
+        //     for(var i=0;i<str.length;i++){
+        //         if(str.charCodeAt(i) > 255){//中文时 占2个字节
+        //             bytes++
+        //         }
+        //     }
+        //     return bytes;
+        // }
 
-        arrSortBype.sort(function(a,b){
-           return getBytes(a)-getBytes(b);
-        });
-
-        console.log(arrSortBype);
+        // arrSortBype.sort(function(a,b){
+        //    return getBytes(a)-getBytes(b);
+        // });
+        //
+        // console.log(arrSortBype);
 
         // slice(startIndex,endIndex)  数据裁剪 （splice 有些类似） [startIndex,endIndex)
 
-        var arr4 = arr3.slice();//[1,2,3,4,5,6];
-        var arr4 = arr3.slice(-2);
-        console.log(arr3,arr4);
-
-        // 类数组
-        function testArray() {
-            // arguments 是否是数组  类似的还有
-            // document.getElementsByTagName();
-            console.log(arguments);
-        }
-
-        testArray(1,2,3,4);
+        // var arr4 = arr3.slice();//[1,2,3,4,5,6];
+        // var arr4 = arr3.slice(-2);
+        // console.log(arr3,arr4);
+        //
+        // // 类数组
+        // function testArray() {
+        //     // arguments 是否是数组  类似的还有
+        //     // document.getElementsByTagName();
+        //     console.log(arguments);
+        // }
+        //
+        // testArray(1,2,3,4);
 
     // 模拟 类数组
         var obj ={
@@ -143,7 +175,29 @@
 
         console.log(strt.unique());
 
+        // 重写 unshift
+        Array.prototype.myunshift = function(){
+            var pos = 0;
+            for(var i = 0;i < arguments.length;i++){
+                this.splice(pos,0,arguments[i]);
+                pos++;
+            }
+            return this.length;
+            // return this.splice(0,0,Array.prototype.slice.call(arguments));
+        };
 
+        // 不改变原数组
+        Array.prototype.myunshift2 = function(){
+            var temparr = Array.prototype.slice.call(arguments);
+            return temparr.concat(this);
+        };
+
+        var testMyun = [3,4,5];
+
+        var newres = testMyun.myunshift2(0,1,2);
+        console.log(newres);
+
+        testMyun.myunshift(0,1,2);
 
 
 
