@@ -23,6 +23,7 @@
             this.pskill = 'html/css';
         }
         Student.prototype = teacher;// 一个 teacher 实例赋值给了 Student.prototype
+        // Student.prototype.tskill = 'hahahha';
         student = new Student();
         student.student = 10; // 原始值 操作 与 操作对象 有所区别
         console.log(student,teacher);
@@ -63,6 +64,8 @@
         }
 
         Student3.prototype = Teacher3.prototype;// 成了公共原型了
+        Student3.prototype.say = null; // 影响
+        console.log(new Student3(),new Teacher3());
 
         //-----------------------分割-----------------------------------------------
 
@@ -93,8 +96,10 @@
         Student4.prototype.age = 18;// 只会新增到 buffer 上 达到隔绝 效果 因为buffer 是 {}！！
         var s = new Student4();
         console.log(s);
-        // 但是！！！ 如果修改原型
+        console.log(s.pSkill);
+        // 但是！！！ 如果修改原型 无法做到
         Student4.prototype.pSkill = 'JS/JQ';
+        console.log(s.pSkill);
         console.log(s,t);
 
         // 圣杯模式
