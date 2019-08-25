@@ -21,7 +21,46 @@
             }
         })();
         testModule.incrementCounter();
-        testModule.resetCounter()
+        testModule.resetCounter();
+        // js 插件写法
+        ;(function () {
+            function Compute(opt){
+                this.x = opt.firstNum || 0;
+                this.y = opt.secondNum || 0;
+            }
+            Compute.prototype = {
+                plus:function () {
+                    return this.x + this.y;
+                },
+                minus:function () {
+                    return this.x - this.y;
+                }
+            };
+            window.Compute = Compute;
+        })();
+        var compute = new Compute({
+            firstNum:4,
+            secondNum:2
+        });
+
+        var res = compute.plus();
+        console.log(res);
+
+        // 企业级的模块化
+        var initComput = (function () {
+            var a = 1,
+                b = 2;
+            function add(){
+                console.log(a + b);
+            }
+            function minus() {
+                console.log(a-b);
+            }
+            return function () {
+                add();
+                minus();
+            }
+        })();
     </script>
 </head>
 <body>
