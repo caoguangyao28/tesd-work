@@ -2,18 +2,39 @@
 <html lang="en" style="width: 100%;height: 100%;padding: 0;">
 <head>
     <meta charset="UTF-8">
-    <title>scroll-controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>scroll-controller(禁止滚动方案)</title>
     <script src="jquery/jquery-1.10.2.min.js"></script>
-
+    <style>
+        html,body,.main{
+            width: 100%;
+            height: 100%;
+        }
+        /* 固定宽高元素未设置 overflow 属性时 加载完成后动态设置 position 为 fixed 时 会禁止滚动 且自动滚动到头部 */
+        /* 固定宽高元素设置 overflow-y: auto 时 加载完成后动态设置 position 为 fixed 时 不会禁止滚动 不会自动滚动到头部，
+           在动态设置 overflow:hidden 时 会发现 禁止了滚动，且原生不会 自动滚动到头部！！ ios h5 都是如此！！
+           可用于解决 ios safari 背景滚动问题【可避免 需要 js 计算原滚动距离 设置滚动】
+         */
+        .main{
+            height: 500px;
+            padding-bottom: 50px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body style="padding: 0;margin: 0;">
-    <div style="width: 100%;height: 2000px;">
-        <div style="width: 500px;height: 500px;overflow: auto;background: #42b983;">
-            <div style="height: 600px;">jjj  </div>
+    <div class="main" style="background-color: #0A6527;">
+        我是头部 内容
+        <div style="width: 100%;height: 1000px;">
+            我是内容区
         </div>
+    </div>
+    <div style="position: fixed;width: 100%;height: 50px;bottom: 0;transform: translateZ(0); -webkit-transform: translateZ(0);">
+        我是固定底部
     </div>
 </body>
 <script>
+    // 方案1 css 结合 js 静止默认滚动行为 重置正常滚动高度
     function bodyScroll(event){
         event.preventDefault();
     }
@@ -30,8 +51,8 @@
         $(document).unbind("scroll.unable");
     }
     $(function(){
-        document.body.addEventListener('touchmove',bodyScroll,false);
-        $('body').css({'position':'fixed',"width":"100%"});
+        // document.body.addEventListener('touchmove',bodyScroll,false);
+        // $('body').css({'position':'fixed',"width":"100%"});
         // unScroll();
     });
 </script>
