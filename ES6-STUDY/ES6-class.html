@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+    <script type="text/javascript">
+        class Point{
+            constructor(x, y ){
+                this.x = x;
+                this.y = y;
+            }
+
+            getPoint() {
+                return this.x + ' ' + this.y;
+            }
+        }
+
+        class ColorPoint extends Point{
+            constructor(x,y,color){
+                super(x, y);// 必须调用父类 构造方法 否则报错
+                this.color = color;
+            }
+
+            toString() {
+                return this.color + '' + super.toString();
+            }
+        }
+
+        let cp = new ColorPoint(2,3,'black');
+        console.log(cp.toString());
+        console.log(cp.getPoint());
+
+        // super 关键字
+    </script>
+</head>
+<body>
+
+</body>
+</html>
