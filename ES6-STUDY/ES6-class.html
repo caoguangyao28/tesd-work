@@ -15,6 +15,12 @@
             }
         }
 
+        // es5 的继承，实际上是先创建子类的实例对象 this, 然后将父类的方法添加到 this 上面 （Parent.apply(this)）
+        // es6 的继承机制完全不同， 实质 是 先将 父类的实例化对象的属性和方法,加到 this 上(所以必须先调用 super 方法),然后用子类的构造
+        // 函数 改造 this
+
+        // es6 父类的静态方法 会被子类继承
+
         class ColorPoint extends Point{
             constructor(x,y,color){
                 super(x, y);// 必须调用父类 构造方法 否则报错
@@ -30,7 +36,55 @@
         console.log(cp.toString());
         console.log(cp.getPoint());
 
-        // super 关键字
+        console.log(Object.getPrototypeOf(ColorPoint) === Point); // Object.getPrototypeOf() 方法可以用来从子类上获取父类
+
+        // super 关键字  1,即可以作为函数, 2,也可以是个对象  使用方法完全不同
+        // 作为函数 代表父类的构造函数 只能用在子类的构造函数之中，用在其他地方就会报错。
+        class A {
+            constructor() {
+                console.log(new.target.name);
+            }
+        }
+        class B extends A{
+            constructor() {
+                super(); // super() 代表父类构造函数，但返回的 this 指向是 子类的实例 A.prototype.constructor.call(this)
+            }
+        }
+
+        // new.target指向当前正在执行的函数
+        new A(); // A
+        new B(); // B
+
+        // 第二种情况，super作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类。
+        class Aa {
+            p() {
+                return 2;
+            }
+        }
+
+        class Bb extends Aa {
+            constructor() {
+                super();
+                console.log(super.p()); // 2
+            }
+        }
+
+        let b = new Bb();
+        /**
+         * 这里需要注意，由于super指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过super调用的。
+         * ES6 规定，在子类普通方法中通过super调用父类的方法时，方法内部的this指向当前的子类实例。
+         */
+
+        /**
+         * 类的 prototype 属性和__proto__属性  因此同时存在两条继承链
+         *
+         * 子类的__proto__属性，表示构造函数的继承，总是指向父类
+         * 子类prototype属性的__proto__属性，表示方法的继承，总是指向父类的prototype属性。
+         */
+
+        B.__proto__ === A ;// true
+
+        B.prototype.__proto__ === A.prototype ;// true
     </script>
 </head>
 <body>
