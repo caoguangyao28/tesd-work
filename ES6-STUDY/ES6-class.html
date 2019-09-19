@@ -85,6 +85,37 @@
         B.__proto__ === A ;// true
 
         B.prototype.__proto__ === A.prototype ;// true
+
+        // 类的继承是按照下面的模式实现的。
+        class C {
+        }
+
+        class D {
+        }
+
+        // B 的实例继承 A 的实例
+        Object.setPrototypeOf(D.prototype, C.prototype);
+
+        // B 继承 A 的静态属性
+        Object.setPrototypeOf(D, C);
+
+        const d = new D();
+
+        // Object.setPrototypeOf
+        // Object.setPrototypeOf = function (obj, proto) {
+        //     obj.__proto__ = proto;
+        //     return obj;
+        // }
+
+        // Object.setPrototypeOf(D.prototype, C.prototype);
+        // // 等同于
+        // D.prototype.__proto__ = C.prototype;
+        //
+        // Object.setPrototypeOf(D, C);
+        // // 等同于
+        // D.__proto__ = C;
+
+
     </script>
 </head>
 <body>
