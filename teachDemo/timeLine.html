@@ -14,10 +14,12 @@
 <body>
 <div></div>
 <script>
-    // document.write('<h1>abc</h1>');// 为什么是追加
+    document.write('<h1>abc</h1>');// 为什么是追加
     // //时间线的问题
     window.onload = function(){//为什么是重写
         console.log('onload');
+        //为什么是重写了整个 body 内部？？
+        // document.write('<h2>abc</h2>');
     };
     /*
     * 浏览器 开始加载页面时 开始 - 结束完毕 按顺序 发生的每一件事情 的总流程
@@ -39,6 +41,7 @@
     * */
     console.log(document.getElementsByTagName('html'));
     console.log(document.readyState);
+    document.write('<h2>edf</h2>');// 为什么是追加
     document.onreadystatechange = function (readState) {
         console.log(document.readyState);
     };
@@ -55,7 +58,6 @@
             s.type = 'text/javascript';
             s.src = 'util.js';
             oscript.parentNode.insertBefore(s,oscript);
-
             if(s.readyState){ // 有些浏览器是支持的
                 s.onreadystatechange = function () {
                     var state = s.readyState;
@@ -67,21 +69,20 @@
             }
         }
 
-        if(s.readyState){
-            s.onreadystatechange = function () {
-                var state = s.readyState;
-                if(state === 'complete' || state === 'loaded'){
-                    // 执行 js
-                    // util[fn]();
-                }
-            }
-        }else if(window.attachEvent){
-            window.attachEvent('onload', async_load);
-        }else{
-            window.addEventListener('onload',async_load,false);
-        }
+        // if(s.readyState){
+        //     s.onreadystatechange = function () {
+        //         var state = s.readyState;
+        //         if(state === 'complete' || state === 'loaded'){
+        //             // 执行 js
+        //             // util[fn]();
+        //         }
+        //     }
+        // }else if(window.attachEvent){
+        //     window.attachEvent('onload', async_load);
+        // }else{
+        //     window.addEventListener('onload',async_load,false);
+        // }
     })();
-
 </script>
 </body>
 </html>
