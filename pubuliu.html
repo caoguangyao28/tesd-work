@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3多列属性瀑布流</title>
+    <style>
+        /*大层*/
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /*瀑布流层*/
+        .waterfall {
+            -moz-column-count: 2;
+            /* Firefox */
+            -webkit-column-count: 2;
+            /* Safari 和 Chrome */
+            column-count: 2;
+            /* 用整数值来定义列数。不允许负值 */
+            -moz-column-gap: 1em;
+            -webkit-column-gap: 1em;
+            column-gap: 1em;
+            /*用长度值来定义列与列之间的间隙。不允许负值*/
+        }
+
+        /*一个内容层*/
+        .item {
+            padding: 1em;
+            margin: 0 0 1em 0;
+            -moz-page-break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+            border: 1px solid #000;
+        }
+
+        .item img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="waterfall">
+            <div class="item">
+                <img src="http://pic28.photophoto.cn/20130827/0005018340822440_b.jpg">
+                <p>1 convallis timestamp</p>
+            </div>
+            <div class="item">
+                <img src="http://pic48.nipic.com/file/20140912/7487939_223919315000_2.jpg">
+                <p>2 convallis timestamp 2 Donec a fermentum nisi. </p>
+            </div>
+            <div class="item">
+                <img src="http://pic48.nipic.com/file/20140912/7487939_223919315000_2.jpg">
+                <p>3 Nullam eget lectus augue. Donec eu sem sit amet ligula
+                    faucibus suscipit. Suspendisse rutrum turpis quis nunc
+                    convallis quis aliquam mauris suscipit.</p>
+            </div>
+            <div class="item">
+                <img src="http://sc.jb51.net/uploads/allimg/150623/14-150623111Z1308.jpg">
+                <p> 4 Donec a fermentum nisi. Integer dolor est, commodo ut
+                    sagittis vitae, egestas at augue. </p>
+            </div>
+            <div class="item">
+                <img src="http://sc.jb51.net/uploads/allimg/150623/14-150623111Z1308.jpg">
+                <p> 5 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+
+
+            <!-- <div class="item">
+                <img src="http://pic37.nipic.com/20140105/9996485_124205238150_2.jpg">
+                <p>6 convallis timestamp</p>
+            </div>
+            <div class="item">
+                <img src="http://sc.jb51.net/uploads/allimg/150623/14-150623111Z1308.jpg">
+                <p>7 convallis timestamp 2 Donec a fermentum nisi. </p>
+            </div>
+            <div class="item">
+                <img src="http://img0.imgtn.bdimg.com/it/u=848233399,609023395&fm=214&gp=0.jpg">
+                <p>8 Nullam eget lectus augue. Donec eu sem sit amet ligula
+                    faucibus suscipit. Suspendisse rutrum turpis quis nunc
+                    convallis quis aliquam mauris suscipit.</p>
+            </div>
+            <div class="item">
+                <img src="http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&fm=214&gp=0.jpg">
+                <p> 9 Donec a fermentum nisi. Integer dolor est, commodo ut
+                    sagittis vitae, egestas at augue. </p>
+            </div>
+            <div class="item">
+                <img src="http://pic.58pic.com/58pic/14/26/07/04R58PICFJm_1024.jpg">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+            <div class="item">
+                <img src="http://img0.imgtn.bdimg.com/it/u=2478517127,62785200&fm=214&gp=0.jpg">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+            <div class="item">
+                <img src="http://pic28.photophoto.cn/20130828/0005018351465470_b.jpg">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+            <div class="item">
+                <img src="http://pic28.photophoto.cn/20130827/0005018340822440_b.jpg">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+            <div class="item">
+                <img src="">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+            <div class="item">
+                <img src="http://dynamic-image.yesky.com/740x-/uploadImages/2014/289/01/IGS09651F94M.jpg">
+                <p> 5 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+
+
+            <div class="item">
+                <img src="http://pic37.nipic.com/20140105/9996485_124205238150_2.jpg">
+                <p>6 convallis timestamp</p>
+            </div>
+            <div class="item">
+                <img src="http://sc.jb51.net/uploads/allimg/150623/14-150623111Z1308.jpg">
+                <p>7 convallis timestamp 2 Donec a fermentum nisi. </p>
+            </div>
+            <div class="item">
+                <img src="http://img0.imgtn.bdimg.com/it/u=848233399,609023395&fm=214&gp=0.jpg">
+                <p>8 Nullam eget lectus augue. Donec eu sem sit amet ligula
+                    faucibus suscipit. Suspendisse rutrum turpis quis nunc
+                    convallis quis aliquam mauris suscipit.</p>
+            </div>
+            <div class="item">
+                <img src="http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&fm=214&gp=0.jpg">
+                <p> 9 Donec a fermentum nisi. Integer dolor est, commodo ut
+                    sagittis vitae, egestas at augue. </p>
+            </div>
+            <div class="item">
+                <img src="http://pic.58pic.com/58pic/14/26/07/04R58PICFJm_1024.jpg">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+            <div class="item">
+                <img src="http://img0.imgtn.bdimg.com/it/u=2478517127,62785200&fm=214&gp=0.jpg">
+                <p> 10 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
