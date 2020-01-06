@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旋转测试</title>
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+            border-radius: 250px;
+            overflow: hidden;
+            position: relative;
+            background-color: aqua;
+            animation: turntable1 1200ms linear infinite;
+
+        }
+        .shanxing{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: bisque;
+            left: 0;
+            top: 0;
+            margin: -50%;
+            transform-origin: right bottom;
+            transform: rotate(37deg) skewY(18deg);
+            
+        }
+        @keyframes turntable1 {
+            0% {
+                transform: rotate(0deg) rotateZ(0) translate3d(0, 0, 0);
+                -webkit-transform: rotate(0deg) rotateZ(0) translate3d(0, 0, 0);
+            }
+            100% {
+                transform: rotate(360deg) rotateZ(0) translate3d(0, 0, 0);
+                -webkit-transform: rotate(360deg) rotateZ(0) translate3d(0, 0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="shanxing"></div>
+    </div>
+</body>
+</html>
