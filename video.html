@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>video</title>
+    <title>video 视频下载 ios</title>
+    <script>
+        function downloadT() {
+            // window.location.href = "https://ps4cnecommediapd.streaming.mediaservices.chinacloudapi.cn/66060b8e-175f-479e-9d52-b2a8286f0a1e/%E5%B0%8F%E7%A8%8B%E5%BA%8F0326%E5%AE%89%E5%88%A9%E7%BA%BD%E5%B4%94%E8%8E%B1%E8%83%B6%E5%8E%9F%E8%9B%8B%E7%99%BD10s_640x360_AACAudio_1130.mp4";
+            var url = "https://ps4cnecommediapd.streaming.mediaservices.chinacloudapi.cn/66060b8e-175f-479e-9d52-b2a8286f0a1e/%E5%B0%8F%E7%A8%8B%E5%BA%8F0326%E5%AE%89%E5%88%A9%E7%BA%BD%E5%B4%94%E8%8E%B1%E8%83%B6%E5%8E%9F%E8%9B%8B%E7%99%BD10s_640x360_AACAudio_1130.mp4";
+            window.open(url);
+            downloadUrlFile(url);
+        }
+        function downloadUrlFile(url) {
+            url = url.replace(/\\/g, '/');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'blob';
+            //xhr.setRequestHeader('Authorization', 'Basic a2VybWl0Omtlcm1pdA==');
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    // 获取文件blob数据并保存
+                    var fileName = getFileName(url);
+                    saveAs(xhr.response, fileName);
+                }
+            };
+
+            xhr.send();
+        }
+
+        function saveAs(data, name) {
+            var urlObject = window.URL || window.webkitURL || window;
+            var export_blob = new Blob([data]);
+            var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+            save_link.href = urlObject.createObjectURL(export_blob);
+            save_link.download = name;
+            save_link.click();
+        }
+
+        function getFileName(url) {
+            var num = url.lastIndexOf('/') + 1
+            var fileName = url.substring(num)
+            //把参数和文件名分割开
+            fileName = decodeURI(fileName.split("?")[0]);
+            return fileName;
+        }
+    </script>
 </head>
 <body>
-    <video controls="controls" autoplay="autoplay" src="./6eaa880f31a410cac75c7ae65792ff9f.mp4"></video>
+    <video width="700px" height="300px" controls="controls" x5-playsinline="x5-playsinline" webkit-playsinline="webkit-playsinline" playsinline="playsinline" src="./11.mp4">
+    </video>
+    <a href="https://ps4cnecommediapd.streaming.mediaservices.chinacloudapi.cn/66060b8e-175f-479e-9d52-b2a8286f0a1e/%E5%B0%8F%E7%A8%8B%E5%BA%8F0326%E5%AE%89%E5%88%A9%E7%BA%BD%E5%B4%94%E8%8E%B1%E8%83%B6%E5%8E%9F%E8%9B%8B%E7%99%BD10s_640x360_AACAudio_1130.mp4"
+        download>下载</a>
+    <button onclick="downloadT()">下载2</button>
 </body>
 </html>
