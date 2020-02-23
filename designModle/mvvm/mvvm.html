@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +7,25 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-modle="message">
-        <div>{{message}}</div>
+        <input type="text" v-modle="message.a">
+        <div>{{message.a}} {{message.b}}</div>
         <ul>
             <li></li>
         </ul>
-        {{message}}
+        {{message.a}}
     </div>
+    <script src="watch.js"></script>
     <script src="compile.js"></script>
+    <script src="Observer.js"></script>
     <script src="mvvm.js"></script>
     <script>
         let vm = new MVVM({
             el: "#app",
             data: {
-                message:"hello mvvm"
+                message:{
+                    a: "hello",
+                    b: "world"
+                }
             }
         })
     </script>
