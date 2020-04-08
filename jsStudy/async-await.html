@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async and await</title>
+</head>
+<body>
+  <h1>async and await</h1>
+  <script>
+
+    function timeoutOne(ms) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+      })
+    }
+
+    async function timeout(ms) {
+      await new Promise((resolve) => {
+        setTimeout(resolve,ms);
+      })
+    }
+
+    /** timeoutOne 与 timeout 等效 */
+    async function asyncPrint(value, ms) {
+      await timeoutOne(ms);
+      console.log(value);
+    }
+    asyncPrint('hello world', 5000);
+
+    // async 错误处理机制
+
+    async function getTitle(url) {
+      let response = await fetch(url);
+      let html = await response.text();
+      return html.match(/<title>([\s\S]+)<\/title>/i)[1];
+    }
+
+    getTitle('/tesd-work/jsStudy/test-this.html').then(res => {
+      console.log(res);
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function Axios(instanceConfig) {
+      this.default = instanceConfig;
+
+    }
+
+    Axios.prototype.request = function request() {
+      console.log('i am axios')
+    }
+
+    Axios.prototype.get = function() {
+      debugger;
+      this.request()
+    }
+
+    class HttpRequest {
+      constructor() {
+        this.instance = new Axios({});
+        this.get = this.instance.get;
+      }
+      sayHello() {
+        alert('hello world');
+      }
+    }
+
+    let test = new HttpRequest();
+    console.log(test);
+    test.get();
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
