@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+  <script>
+    // new promise 构造执行 输出 "最外侧 promise"  -> resolve 执行完 -> 执行外部第一个then 
+    // 外部第一个then 返回了 一个 promise ，这个 return 代表外部第二个then 需要等待 return 之后 promise的结果
+    // 所以内部的 promise 都是优先 外部第二个then 执行完
+    // new Promise((resolve, reject) => {
+    //   console.log("最外侧 promise")
+    //   resolve()
+    // }).then(() => { // 外部第一个then
+    //   return new Promise((resolve, reject ) => {
+    //     console.log("内部 promise");
+    //     resolve()
+    //   }).then(() => {
+    //     console.log("内部第一个then")
+    //   }).then(() => {
+    //     console.log("内部第二个then")
+    //   })
+    // }).then(() => { // 外部第二个 then
+    //   console.log("外部第二个then")
+    // })
+    // 第二种表现
+    // new Promise((resolve, reject) => {
+    //   console.log("最外侧 promise")
+    //   resolve()
+    // }).then(() => { // 外部第一个then
+    //   new Promise((resolve, reject ) => {
+    //     console.log("内部 promise");
+    //     resolve()
+    //   }).then(() => {
+    //     console.log("内部第一个then")
+    //   }).then(() => {
+    //     console.log("内部第二个then")
+    //   })
+    // }).then(() => { // 外部第二个 then
+    //   console.log("外部第二个then")
+    // })
+    // 第三种表现
+    // new Promise((resolve, reject) => {
+    //   console.log("最外侧 promise")
+    //   resolve()
+    // }).then(() => { // 外部第一个then
+    //   let p = new Promise((resolve, reject ) => {
+    //     console.log("内部 promise");
+    //     resolve()
+    //   })
+    //   p.then(() => {
+    //     console.log("内部第一个then")
+    //   })
+    //   p.then(() => {
+    //     console.log("内部第二个then")
+    //   })
+    // }).then(() => { // 外部第二个 then
+    //   console.log("外部第二个then")
+    // })
+
+    // 第四种表现
+    // let p = new Promise((resolve, reject) => {
+    //   console.log("最外侧 promise")
+    //   resolve()
+    // })
+    // p.then(() => { // 外部第一个then
+    //   new Promise((resolve, reject ) => {
+    //     console.log("内部 promise");
+    //     resolve()
+    //   }).then(() => {
+    //     console.log("内部第一个then")
+    //   }).then(() => {
+    //     console.log("内部第二个then")
+    //   })
+    // })
+    // p.then(() => { // 外部第二个 then
+    //   console.log("外部第二个then")
+    // })
+
+    // 第五种情况
+    new Promise((resolve, reject) => {
+      console.log("最外侧 promise")
+      resolve()
+    }).then(() => { // 外部第一个then
+      new Promise((resolve, reject ) => {
+        console.log("内部 promise");
+        resolve()
+      }).then(() => {
+        console.log("内部第一个then")
+        return Promise.resolve()
+      }).then(() => {
+        console.log("内部第二个then")
+      })
+    }).then(() => { // 外部第二个 then
+      console.log("外部第二个then")
+    }).then(() => {
+      console.log("外部第三个then")
+    })
+
+  </script>
+</head>
+<body>
+  <h1>promice</h1>
+</body>
+</html>
