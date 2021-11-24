@@ -4,7 +4,7 @@
 var testObj = {
     "name": "caoguangyao",
     "age": "25"
-}
+};
 
 $(function() {
     testObj.setAge();
@@ -12,4 +12,4 @@ $(function() {
 
 testObj.setAge = function() {
     alert(111);
-}
+};
